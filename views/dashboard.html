@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTH TOOLS</title>
+    <link rel="stylesheet" type="text/css" href="./statics/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./statics/css/style.css">
+</head>
+<body>
+    
+    <!-- navbar -->
+    <div class="main-body-container">
+        <nav class="sidenavbar">
+            <div class="sidebar">
+                <ul class="list-items">
+                    <li class="" data-tab-cont="bmi">
+                        <span class="icon">
+                            <ion-icon name="calculator"></ion-icon>
+                        </span>
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">BMI Calculator</small>
+                        </div>
+                    </li>
+                    <li class="" data-tab-cont="coro-tracker">
+                        <span class="icon">
+                            <ion-icon name="medical"></ion-icon>
+                        </span> 
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Coronavirus Tracker</small>
+                        </div>
+                    </li>
+                    <li data-tab-cont="disease-dict">
+                        <span class="icon">
+                            <ion-icon name="book"></ion-icon>
+                        </span> 
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Disease Dictionary</small>
+                        </div>
+                    </li>
+                    <li data-tab-cont="food-recipe">
+                        <span class="icon">
+                            <ion-icon name="pizza"></ion-icon>
+                        </span>
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Food Recipes</small>
+                        </div>
+                    </li>
+                    <li data-tab-cont="health-news">
+                        <span class="icon">
+                            <ion-icon name="newspaper"></ion-icon>
+                        </span>
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Health News</small>
+                        </div>
+                    </li>
+                    <li class="" data-tab-cont="meditation">
+                        <span class="icon">
+                            <ion-icon name="musical-notes"></ion-icon>
+                        </span>
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Meditation</small>
+                        </div>
+                    </li>
+                    <li class="active"  data-tab-cont="heart-rate">
+                        <span class="icon">
+                            <ion-icon name="heart"></ion-icon>
+                        </span>
+                        <div class="tool-tip">
+                            <small class="tool-tip-cont">Heart Rate Test</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- responsive navbar -->
+            <div class="responsive-nav">
+                <!-- burger -->
+                <div class="burger">
+                    <ion-icon name="menu"></ion-icon>
+                </div>
+                <!-- nav items -->
+                <div class="main-nav-items">
+                    <ul class="list-items" data-responsive-menu>
+                        <li>
+                            <ion-icon name="calculator" class="" data-tab-cont="bmi"></ion-icon>
+                        </li>
+                        <li>
+                            <ion-icon name="medical" class="active" data-tab-cont="coro-tracker"></ion-icon>
+                        </li>
+                        <li>
+                            <ion-icon name="book"  data-tab-cont="disease-dict"></ion-icon>
+                        </li>
+                        <li>
+                            <ion-icon name="pizza" data-tab-cont="food-recipe"></ion-icon>
+                        </li>
+                        <li  class="active">
+                            <ion-icon name="newspaper"  data-tab-cont="health-news"></ion-icon>
+                        </li>
+                        <li class="">
+                            <ion-icon name="musical-notes"  data-tab-cont="meditation"></ion-icon>
+                        </li>
+                        <li>
+                            <ion-icon name="heart" data-tab-cont="heart-rate"></ion-icon>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <section class="section">
+            <div class="main-cont">
+                <div class="welcome-container">
+                    <div class="user-card">
+                        <ion-icon name="person-circle"></ion-icon>
+                        <span class="name ml-1">
+                            John Doe
+                        </span>
+                    </div>
+                    <div class="user-action">
+                        <a href="/logout" class="btn logout-btn">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="boxes-cont">
+                    <!-- bmi calculator -->
+                    <div class="box bmi-calc" data-tab-box="bmi">
+                        <div class="head">
+                            <h1>BMI Calculator</h1>
+                            <p>Gender</p>
+                            <div class="select">
+                                <button  data-gender="male" class="male" value="male">
+                                    <ion-icon 
+                                    name="man"
+                                    class="male" value="male"></ion-icon>
+                                </button>
+                                <button name="woman" class="female" data-gender="female" value="female">
+                                    <ion-icon 
+                                    name="woman"
+                                    class="female" value="female"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="measurement-screen">
+                            <div class="head">
+                                <h2>HEIGHT (FT)</h2>
+                                <h2>WEIGHT (lb)</h2>
+                            </div>
+                            <div class="inputs">
+                                <input type="number" data-bmi-height="height" class="bmi-inputs" name="height" placeholder="60">
+                                <input type="number" data-bmi-weight="weight" class="bmi-inputs" name="weight" placeholder="45">
+                            </div>
+                            <div class="action">
+                                <button class="btn submit-btn" data-calc-button>
+                                    Calculate BMI
+                                </button>
+                            </div>
+                        </div>
+                        <div class="result-main-screen">
+                            <div class="result-screen" data-bmi-result>
+                            </div>
+                            <div class="recommendations">
+                                <p>Here are other nutrition food recommenation which can help you stabilize your fitness.</p>
+                                <br>
+                                <div class="food-boxes-cont" data-food-container>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="share-cont">
+                            <button class="btn share-btn" data-bmi-share>
+                                <ion-icon name="share-social"></ion-icon> Share Result
+                            </button>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- coro tracker -->
+                    <div class="box coro-tracker" data-tab-box="coro-tracker">
+                        <div class="coro-container">
+                            <div class="head">
+                                <p>Persolan Covid-19 Chatbot</p>
+                                <div class="action-select">
+                                    <button class="btns chatbot-btn" data-chat-tab>
+                                        Chat Bot
+                                    </button>
+                                    <button class="btns voice-recognition-btn" data-chat-tab>
+                                        Voice Recognition
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- chat container -->
+                            <div class="chat-container">
+                                <div class="chat-head">
+                                    <div class="img-cont">
+                                        <img src="./statics/img/section/bot.png" alt="" class="img-fluid">
+                                    </div>
+                                    <span class="botname">Personal Bot</span>
+                                </div>
+                                <div class="chat-body">
+                                    <span class="chat-bot-msg">
+                                        hello my name is benrobo
+                                    </span>
+                                    <span class="chat-user-msg">
+                                        Human chat message
+                                    </span>
+                                    <span class="chat-bot-msg">
+                                        hello my name is benrobo
+                                    </span>
+                                    <span class="chat-user-msg">
+                                        Human chat message
+                                    </span>
+                                </div>
+                                <div class="chat-action">
+                                    <input type="text" class="chat-msg-input" placeholder="Countries name here">
+                                    <button class="submit-btn btn inactive">
+                                        Send <ion-icon name="arrow-forward-outline"></ion-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- voice recognition -->
+                            <div class="voice-reg-cont">
+                                <div class="main">
+                                    <div class="mic voice-reg-mic">
+                                        <h5>Speak</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Disease  Dict -->
+                    <div class="box disease-dict" data-tab-box="disease-dict">
+                        <div class="dict-cont">
+                            <div class="head">
+                                <h1>Disease Dictionary</h1>
+                                <p>Lookup word and never forget it.</p>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" placeholder="Start searching" autofocus class="searchbox dict-input">
+                            </div>
+                            <br>
+                            <div class="result-container dict-result-cont">
+                                <div class="result-card">
+                                    <div class="head">
+                                        <span class="letter">A</span>
+                                    </div>
+                                    <div class="body mt-5">
+                                        <h4>coronavirus</h4>
+                                        <span>kəˈrəʊnəˌvʌɪrəs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- dictionary modal -->
+                        <div class="dict-modal-cont">
+                            <div class="dict-modal-box">
+                                <div class="head">
+                                    <h1>A</h1>
+                                    <h3 class="px-3">Amaphombia</h3>
+                                    <div class="main">
+                                        <span>[ˈrəʊbɒt]</span>
+                                        <span class="audio" data-audio="">
+                                            <ion-icon name="mic" data-dict-mic></ion-icon>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="body mt-4">
+                                    <h5>Origin</h5>
+                                    <small class="ml-5 px-3">Lorem ipsum dolor sit amet.</small>
+                                    <br>
+                                    <h5>Noun</h5>
+                                    <p>Definition</p>
+                                    <small class="ml-5 px-3">Lorem ipsum dolor sit amet.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box food-recipe" data-tab-box="food-recipe">
+                        <h1>Meditation APP</h1>
+                    </div>
+                    <div class="box health-news" data-tab-box="health-news">
+                        <div class="head">
+                            <h1>Top Health & Fitness News.</h1>
+                            <p>Get all news realted to health.</p>
+                        </div>
+                        <div class="main-body">
+                            <!-- health -->
+                            <div class="health-section">
+                                <hr>
+                                <p> <small class="deco">*</small> Health</p>
+                                <br>
+                                <div class="boxes h-container">
+                                    <div class="h-cards">
+                                        <a href="https://www.macrumors.com/2021/07/22/apple-watch-series-6-ad/">
+                                            <div class="img-cont" style="background: url('https://images.macrumors.com/t/QGZ4J3b7vKsMg849Cv6rM0Rfzn8=/1600x/https://images.macrumors.com/article-new/2021/07/apple-watch-hello-sunshine-ad.jpg'); background-size:cover; background-position: center;"></div>
+                                            
+                                            <div class="body p-3">
+                                                <small class="title">Apple Shares 'Hello Sunshine' Ad Highlighting Apple Watch Series 6 Health and Fitness Features</small>
+                                                <br>
+                                                <div class="date-cont mt-4">
+                                                    <span>2021-07-22T16:19:57Z</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <br>
+                                <hr>
+                                <p><small class="deco">*</small> Fitness</p>
+                                <div class="boxes f-container">
+                                    <div class="h-cards">
+                                        <a href="https://www.macrumors.com/2021/07/22/apple-watch-series-6-ad/">
+                                            <div class="img-cont" style="background: url('https://images.macrumors.com/t/QGZ4J3b7vKsMg849Cv6rM0Rfzn8=/1600x/https://images.macrumors.com/article-new/2021/07/apple-watch-hello-sunshine-ad.jpg'); background-size:cover; background-position: center;"></div>
+                                            
+                                            <div class="body p-3">
+                                                <small class="title">Apple Shares 'Hello Sunshine' Ad Highlighting Apple Watch Series 6 Health and Fitness Features</small>
+                                                <br>
+                                                <div class="date-cont mt-4">
+                                                    <span>2021-07-22T16:19:57Z</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meditation App -->
+                    <div class="box meditation" data-tab-box="meditation">
+                       <div class="meditation-container">
+                           <div class="head">
+                                <h1>Meditation</h1>
+                                <p>
+                                    Peace begins within and it expands to the outside
+                                </p>
+                           </div>
+                           <div class="img-cont">
+                               <div class="sunvibes">
+                                <div class="pointer-cont medi-pointer">
+                                </div>
+                               </div>
+                               <img src="./statics/img/section/medi.svg" class="img-fluid medi-img" alt="">
+                           </div>
+                           <div class="medi-instruction">
+                               <div class="medi-struction"></div>
+                               <br>
+                                <div class="start-cont" mt-4>
+                                    <button class="start-btn med-start-btn medbtn">
+                                       Start Meditating
+                                    </button>
+                                    <button class="stop-btn med-stop-btn medbtn">
+                                        Stop Meditating
+                                    </button>
+                               </div>
+                           </div>
+                       </div>
+                    </div>      
+                    <!-- heart rate -->
+                    <div class="box heart-rate" data-tab-box="heart-rate">
+                        <div class="head">
+                            <h2>Target Heart Rate</h2>
+                            <p>Get your target heart rate using this calculator</p>
+                            <span class="history-btn">
+                                <ion-icon name="bookmark"></ion-icon>
+                            </span>
+                        </div>
+                        <div class="show-screen">
+                            <br>
+                            <div class="inputs-field">
+                                <p>Your AGE</p>
+                                <input type="number" placeholder="25" class="age">
+                                <br>
+                                <button class="btn heartrate-btn">Calculate Target Heart Rate</button>
+                            </div>
+                            <br>
+                            <div class="result-container">
+                                <span class="close-cont">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </span>
+                                <div class="img-cont">
+                                    <ion-icon name="heart" class="heart"></ion-icon>
+                                    <br>
+                                    <div class="beat-cont">
+                                        <img src="./statics/img/section/heart.png" alt="" class="beat-line">
+                                        <div class="beat-ovl"></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <h1 class="target-value anime">
+                                    125 bpm
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="history-cont">
+                            <div class="cont">
+                                <table class="table table-striped" data-heart-history>
+                                    <thead>
+                                        <th>Created</th>
+                                        <th>MAX Heart Rate</th>
+                                        <th>HRR</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>a day go</td>
+                                            <td>100</td>
+                                            <td>104</td>
+                                        </tr>
+                                        <tr>
+                                            <td>a day go</td>
+                                            <td>100</td>
+                                            <td>104</td>
+                                        </tr>
+                                        <tr>
+                                            <td>a day go</td>
+                                            <td>100</td>
+                                            <td>104</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <div class="action">
+                                    <button class="btn btn-danger" data-clear-history>Clear All</button>
+                                    <button class="btn close" data-close-history>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- covid 19 modal -->
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./statics/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let pulseinfo = document.querySelector("[data-help-btn]");
+        let moreinfocont = document.querySelector("[data-more-info]");
+        let isclicked = false;
+
+        console.log(moreinfocont)
+        pulseinfo.onclick = ()=>{
+            if(isclicked === false){
+                moreinfocont.style.display = "flex"
+                isclicked = true
+            }
+            else if(isclicked === true){
+                moreinfocont.style.display = "none"
+                isclicked = false
+            }
+        }
+    </script>
+
+</body>
+</html>

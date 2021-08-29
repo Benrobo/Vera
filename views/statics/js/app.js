@@ -1,0 +1,958 @@
+addEventListener("load", () => {
+  tabFunc();
+  // TARGET_HEART_RATE()
+  // COVID_CHATBOT();
+  HEALTH_NEWS();
+  BMI_ALGORITHM();
+  // MEDITATION_FUNC();
+  DISEASE_DICT();
+});
+
+// Utilities
+function log(val) {
+  return console.log(val);
+}
+
+function $(elm) {
+  return document.querySelector(elm);
+}
+
+function $all(elm) {
+  const main = document.querySelectorAll(elm);
+  if (typeof main == "object") {
+    return document.querySelectorAll(elm);
+  }
+}
+
+// Main code
+
+function tabFunc() {
+  let tabs = document.querySelectorAll("[data-tab-cont]");
+
+  let tabboxes = document.querySelectorAll("[data-tab-box]");
+
+  let bmibox = document.querySelector(".bmi-calc");
+  let corobox = document.querySelector(".coro-tracker");
+  let diseaseDict = document.querySelector(".disease-dict");
+  let foodRecipe = document.querySelector(".food-recipe");
+  let healthNews = document.querySelector(".health-news");
+  let meditation = document.querySelector(".meditation");
+  let heartRate = $(".heart-rate")
+  let burgerMenu = $(".burger");
+  let responsiveMenu = $("[data-responsive-menu]");
+
+  tabboxes[6].style.display = "block";
+
+  tabs.forEach((tab) => {
+    tab.onclick = (e) => {
+      let curr = document.querySelectorAll(".active");
+      if (curr.length > 0) {
+        curr[0].className = curr[0].className.replace("active", "");
+      }
+
+      e.target.classList.add("active");
+
+      switch (e.target.dataset.tabCont) {
+        case "bmi":
+          tabboxes[0].style.display = "block";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "none";
+          meditation.style.display = "none";
+          heartRate.style.display = "none";
+          break;
+        case "coro-tracker":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "block";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "none";
+          meditation.style.display = "none";
+          heartRate.style.display = "none";
+          break;
+        case "disease-dict":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "block";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "none";
+          meditation.style.display = "none";
+          heartRate.style.display = "none";
+          break;
+
+        case "food-recipe":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "block";
+          healthNews.style.display = "none";
+          meditation.style.display = "none";
+          heartRate.style.display = "none";
+          break;
+        case "health-news":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "block";
+          meditation.style.display = "none";
+          heartRate.style.display = "none";
+          break;
+        case "meditation":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "none";
+          meditation.style.display = "block";
+          heartRate.style.display = "none";
+          break;
+        case "heart-rate":
+          tabboxes[0].style.display = "none";
+          corobox.style.display = "none";
+          diseaseDict.style.display = "none";
+          foodRecipe.style.display = "none";
+          healthNews.style.display = "none";
+          meditation.style.display = "none";
+          heartRate.style.display = "block";
+          break;
+        default:
+          break;
+      }
+      // if(e.target.dataset.tabcont)
+    };
+  });
+
+  log(responsiveMenu)
+  // burger menu functionality
+  let isActive = false;
+  burgerMenu.onclick = ()=>{
+    if(isActive == false){
+      burgerMenu.innerHTML = ""
+      burgerMenu.innerHTML = `<ion-icon name="close"></ion-icon>`
+      responsiveMenu.style.display = "flex"
+      isActive = true
+    }
+    else if(isActive == true){
+      burgerMenu.innerHTML = `<ion-icon name="menu"></ion-icon>`
+      responsiveMenu.style.display = "none"
+      isActive = false
+    }
+  }
+}
+
+// BMI Algorithm
+
+const BMI_ALGORITHM = function () {
+  // formular
+  /**
+    bmi = weight (kg) / height(m2)
+    pounds->kg = (2)pounds / 2.205(mass value) === 0.907185 kg
+    ft -> m = (2) ft / 3.281 === 0.6096 m
+  **/
+
+  // global variables
+
+  let calcbtn = $("[data-calc-button]");
+  let gender = "";
+  let genderbtn = $all("[data-gender]");
+  let height = $("[data-bmi-height]");
+  let weight = $("[data-bmi-weight]");
+  let resultcont = $("[data-bmi-result]");
+  let figuredir = "./statics/img/figures";
+  let bmiInputs = $all(".bmi-inputs");
+  let foodCont = $("[data-food-container]");
+  let sharebtn = $("[data-bmi-share]");
+  let figure = $(".figure");
+  let userFigure;
+
+  let bmiData = {};
+
+  let { fboy, fgirl, sboy, sgirl } = {
+    fboy: "fatboy.png",
+    fgirl: "fatgirl.png",
+    sboy: "slimboy.png",
+    sgirl: "slimgirl.png",
+  };
+
+  // input event to disable calcbtn when fit empty
+  bmiInputs.forEach((input) => {
+    input.oninput = () => {
+      if (input.value != "") {
+        calcbtn.classList.remove("inactive");
+      }
+    };
+  });
+
+  genderbtn.forEach((btn) => {
+    btn.onclick = (e) => {
+      gender = e.target.classList[0];
+    };
+  });
+  const OVERWEIGHT = 30,
+    UNDERWEIGHT = 18.5,
+    NORMAL = 25,
+    OBESE = 31;
+
+  let bmi = 0,
+    meter,
+    kg;
+
+  calcbtn.onclick = () => {
+    calculate();
+  };
+  calcbtn.classList.add("inactive");
+
+  function calculate() {
+    // validate inputs
+    if (height.value == "" || weight.value == "") {
+      alert("Input cannot be empty");
+      return;
+    } else if (height.value <= 0 || weight.value <= 0) {
+      alert("Inputs value must be greather than 0");
+      return;
+    } else if (height.value > 10 || weight.value >= 1000) {
+      alert("Invalid weight or height value");
+      return;
+    } else if (gender == "") {
+      alert("Please select your gender");
+    } else {
+      calcbtn.classList.remove("inactive");
+
+      meter = Math.pow(height.value / 3.281, 2);
+      kg = weight.value / 2.205;
+      bmi = (kg / meter).toFixed(2);
+
+      //bmi data
+      bmiData.gender = gender;
+      bmiData.height = height.value;
+      bmiData.weight = weight.value;
+      bmiData.hUnit = "ft";
+      bmiData.wUnit = "kg";
+      // bmiData.userFigure = userFigure;
+      bmiData.bmi = bmi;
+
+      // // check if bmiData object is not empty and show the sharebutton
+      // if(Object.keys(bmiData).length !== 0){
+      //   sharebtn.style.display = "flex"
+      // }
+
+      if (bmi == null) {
+        resultcont.innerHTML = `
+          <p class="text-center p-4">Nothing to show here. Try calculating your BMI above.</p>
+        `;
+        return;
+      }
+      // male
+      else if (bmi < 18.5 && gender == "male") {
+        bmiData.userFigure = "underweight";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${sboy}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure underweight">UNDERWEIGHT</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi >= 25 && gender == "male") {
+        bmiData.userFigure = "overweight";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${fboy}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure overweight">OVERWEIGHT</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi >= 18.5 && bmi < 24.9 && gender == "male") {
+        bmiData.userFigure = "normal";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${sboy}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure normal">NORMAL</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi <= 30 && gender == "male") {
+        bmiData.userFigure = "obese";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${fboy}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure obese">OBESE</p> 
+          </div>
+          </div>
+        `;
+      }
+      // female
+      else if (bmi < 18.5 && gender == "female") {
+        bmiData.userFigure = "underweight";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${sgirl}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure underweight">UNDERWEIGHT</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi >= 25 && gender == "female") {
+        bmiData.userFigure = "overweight";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${fgirl}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure overweight">OVERWEIGHT</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi >= 18.5 && bmi < 24.9 && gender == "female") {
+        bmiData.userFigure = "normal";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${sgirl}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure normal">NORMAL</p> 
+          </div>
+          </div>
+        `;
+      } else if (bmi >= 30 && gender == "female") {
+        bmiData.userFigure = "obese";
+        resultcont.innerHTML = `
+        <div class="result-screen">
+          <div class="img-cont">
+            <img src="${figuredir}/${fgirl}" alt="" class="img-fluid">
+          </div>
+          <div class="result">
+              <h3>YOUR BMI</h3>
+              <h1>${bmi}</h1>
+              <p class="figure obese">OBESE</p> 
+          </div>
+          </div>
+        `;
+      }
+    }
+
+    // Check if the result main screen isnt empty, if it is hide the recipes card from showing.
+    if (resultcont.innerHTML != false) {
+      // clear foodcont before displaying recipes
+      foodCont.innerHTML = "";
+      generateNutrientRecipes();
+    }
+  }
+
+  async function generateNutrientRecipes() {
+    const API_KEY = "df3f7941a7114ae29e933628e7041f46";
+    const API = `https://api.spoonacular.com/recipes/findByNutrients?minCarbs=10&maxCarbs=100&number=6&apiKey=${API_KEY}&includeNutrition=false`;
+
+    try {
+      let request = await fetch(API);
+      let result = await request.json();
+      if (result && result.length !== 0) {
+        result.forEach((data) => {
+          foodCont.innerHTML += `
+          <div class="food-card">
+              <div class="img-cont" style="background:url('${data.image}'); background-size:cover;; background-position: center;"></div>
+              <br>
+              <p class="title">${data.title}</p>
+              <div class="cont">
+                  <span class="tag">
+                      <small>calories ${data.calories}</small>
+                  </span>
+                  <span class="tag">
+                      <small>protein ${data.protein}</small>
+                  </span>
+                  <span class="tag">
+                      <small>fat ${data.fat}</small>
+                  </span>
+                  <span class="tag">
+                      <small>carbs ${data.carbs}</small>
+                  </span>
+              </div>
+          </div>
+          `;
+        });
+        return;
+      } else if (result == "" || result.length == 0) {
+        foodCont.innerHTML = `
+          <small class="spinner-border" style="text-align:center; padding:10px 12px; background:var(--dark-md);"><small>
+        `;
+        setTimeout(() => {
+          foodCont.innerHTML = `
+            <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry nothing to show here<small>
+          `;
+        }, 2000);
+      }
+    } catch (error) {
+      foodCont.innerHTML = `
+          <small class="spinner-border" style="text-align:center; padding:10px 12px; background:var(--dark-md);"><small>
+        `;
+      setTimeout(() => {
+        foodCont.innerHTML = `
+            <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, recipes could not be displayed.<small>
+          `;
+      }, 2000);
+    }
+  }
+};
+
+// Meditation APP
+const MEDITATION_FUNC = () => {
+  // global variables
+  let mediImg = $(".medi-img"),
+    startbtn = $(".med-start-btn"),
+    stopbtn = $(".med-stop-btn"),
+    mediInstruction = $(".medi-struction"),
+    sunvibes = $(".sunvibes"),
+    totaltime = 7500,
+    breatheTime = (totaltime / 5) * 2,
+    holdTime = totaltime / 5;
+  (timeleft = 3), (audio = new Audio("statics/audio/epic.mp3"));
+
+  let startInterval;
+
+  // clear mediinstruction content
+  mediInstruction.innerHTML = "";
+
+  startbtn.onclick = () => {
+    startbtn.style.display = "none";
+    stopbtn.style.display = "flex";
+
+    mediInstruction.innerHTML = `
+        <p>Meditation is about to begin, get ready!<p>
+    `;
+
+    // Play music
+    setTimeout(() => {
+      audio.play();
+    }, 1000);
+    audio.addEventListener("ended", function () {
+      this.currentTime = 0;
+      this.play();
+    });
+    audio.loop = true;
+
+    startInterval = setInterval(() => {
+      startMeditation();
+    }, totaltime);
+  };
+
+  function startMeditation() {
+    setTimeout(() => {
+      sunvibes.classList.add("animate-sunpulse");
+      mediImg.classList.add("medigrow");
+      mediInstruction.innerHTML = `
+      <p>Breathe In<p>
+      `;
+
+      setTimeout(() => {
+        mediImg.classList.remove("medigrow");
+        mediInstruction.innerHTML = `
+        <p>Breathe Out<p>
+        `;
+      }, breatheTime);
+    }, breatheTime);
+  }
+
+  // stop mediatation
+
+  function stopMeditation() {
+    stopbtn.onclick = () => {
+      stopbtn.style.display = "none";
+      startbtn.style.display = "flex";
+
+      mediInstruction.innerHTML = "";
+      sunvibes.classList.remove("animate-sunpulse");
+      mediImg.classList.remove("medigrow");
+
+      audio.currentTime = 0;
+      audio.pause();
+      clearInterval(startInterval);
+
+      log(startbtn);
+    };
+  }
+  stopMeditation();
+};
+
+// Disease Dictionary
+
+const DISEASE_DICT = () => {
+  // global variables
+  let searchbox = $(".dict-input");
+  let resultcont = $(".dict-result-cont");
+
+  function handleDict() {
+    searchbox.onkeydown = async (e) => {
+      const API = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchbox.value}`;
+
+      if (e.key == "Enter") {
+        if (searchbox.value == "") {
+          alert("input field cant be empty");
+          return;
+        }
+
+        let req = await fetch(API);
+        let res = await req.json();
+
+        res.forEach((data) => {
+          let men = data.meanings.map((el) => {
+            return el.definitions;
+          });
+
+          men.map((elm2) => {
+            log(elm2);
+          });
+        });
+      }
+    };
+  }
+
+  handleDict();
+};
+
+// Health news
+const HEALTH_NEWS = () => {
+  // globalvariables
+  let hcontainer = $(".h-container");
+  let fcontainer = $(".f-container");
+
+  // display a loading animation before data is gotten from server
+  hcontainer.innerHTML = `
+    <spann class="spinner-border"></span>
+  `;
+
+  fcontainer.innerHTML = `
+    <spann class="spinner-border"></span>
+  `;
+  // make request
+  getHealthNews("/api/health");
+  getFitnessNews("/api/fitness");
+  // get health news
+  async function getHealthNews(api) {
+    let req = await fetch(api);
+    let res = await req.json();
+
+    log(res);
+
+    if (!res) {
+      hcontainer.innerHTML = "";
+      hcontainer.innerHTML = `
+      <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, health articles could not be displayed.<small>
+      `;
+    } else if (res.status == 500) {
+      hcontainer.innerHTML = `
+      <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, health articles could not be displayed.<small>
+      `;
+    } else if (res && res.status == 200) {
+      hcontainer.innerHTML = "";
+      res.data.forEach((data) => {
+        hcontainer.innerHTML += `
+        <div class="h-cards">
+          <a href="${data.redirUrl}" target="_blank">
+            <div class="img-cont" style="background: url('${
+              data.image
+            }'); background-size:cover; background-position: center;"></div>
+            
+            <div class="body p-3">
+                <small class="title">${data.title}</small>
+                <br>
+                <div class="date-cont mt-4">
+                    <span>${data.posted_at}</span>
+                </div>
+            </div>
+          </a>
+        </div>
+        `;
+      });
+    }
+  }
+
+  async function getFitnessNews(api) {
+    let req = await fetch(api);
+    let res = await req.json();
+
+    if (!res) {
+      fcontainer.innerHTML = "";
+      fcontainer.innerHTML = `
+      <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, health articles could not be displayed.<small>
+      `;
+    } else if (res.status == 500) {
+      fcontainer.innerHTML = `
+      <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, health articles could not be displayed.<small>
+      `;
+    } else if (res && res.status == 200) {
+      fcontainer.innerHTML = "";
+      res.data.forEach((data) => {
+        fcontainer.innerHTML += `
+        <div class="h-cards">
+          <a href="${data.redirUrl}" target="_blank">
+            <div class="img-cont" style="background: url('${
+              data.image
+            }'); background-size:cover; background-position: center;"></div>
+            
+            <div class="body p-3">
+                <small class="title">${data.title}</small>
+                <br>
+                <div class="date-cont mt-4">
+                    <span>${data.posted_at}</span>
+                </div>
+            </div>
+          </a>
+        </div>
+        `;
+      });
+    }
+  }
+};
+
+// Covid-19 chat message
+const COVID_CHATBOT = () => {
+  // Tab Function
+  let tabbtns = $all("[data-chat-tab]");
+  let chatContainer = $(".chat-container");
+  let voiceRecogCont = $(".voice-reg-cont");
+  let voiceStart = $(".voice-start");
+  let voiceStop = $(".voice-stop");
+
+  tabbtns.forEach((btn) => {
+    btn.onclick = (e) => {
+      e.target.classList.remove("active");
+
+      if (e.target.classList.contains("chatbot-btn")) {
+        chatContainer.style.display = "block";
+        voiceRecogCont.style.display = "none";
+      } else if (e.target.classList.contains("voice-recognition-btn")) {
+        chatContainer.style.display = "none";
+        voiceRecogCont.style.display = "flex";
+      }
+      // e.target.classList.add("active");
+    };
+  });
+
+  // return;
+  // init bot message
+  let bot;
+  let botMsg = ["hello ben", "how can i help you"];
+  // init socket.io
+  var socket = io();
+
+  // global variables
+  let chatbtn = $(".chat-submit");
+  let chatmsg = $(".chat-msg-input");
+  let chatCont = $(".chat-body");
+  let botLoading = $(".bot-loading");
+  let chatAudio = new Audio("statics/audio/chat.mp3")
+
+  botLoading.style.display = "block";
+  // onpage load, show a bot message
+  setTimeout(() => {
+    botLoading.style.display = "none";
+    setTimeout(() => {
+      div = document.createElement("div");
+      div.setAttribute("class", "chat-bot-msg");
+      div.innerText =
+        "This is a simple covid19 bot, all you have to do is type a country name and get covid 19 result relating to that country";
+      chatCont.appendChild(div);
+    }, 1000);
+  }, 1000);
+
+  chatbtn.onclick = async (e) => {
+    // let div = document.createElement("div");
+    socket.emit("user chat", chatmsg.value);
+    socket.emit("bot chat", chatmsg.value);
+  };
+
+  // get message from server
+
+  socket.on("user message", (data) => {
+    if (data.userData) {
+      let div = document.createElement("div");
+      chatmsg.value = "";
+      // chatCont.innerHTML = ""
+      div.setAttribute("class", "chat-user-msg");
+      div.innerText = data.userData;
+      chatCont.appendChild(div);
+      chatAudio.play()
+      chatAudio.currentTime = 0
+      chatCont.scrollTop = chatCont.scrollHeight;
+    }
+  });
+
+  socket.on("bot message", (data) => {
+    log(data);
+    botLoading.style.display = "block";
+    if (!data) {
+      botLoading.style.display = "block";
+    }
+    if (data.botData) {
+      setTimeout(() => {
+        let div = document.createElement("div");
+        div.setAttribute("class", "chat-bot-msg");
+        div.innerHTML = data.botData;
+        chatCont.appendChild(div);
+        chatAudio.play()
+        chatAudio.currentTime = 0
+        chatCont.scrollTop = chatCont.scrollHeight;
+        botLoading.style.display = "none";
+      }, 300);
+    }
+  });
+
+  // handle voice recognition
+
+  function voiceReg() {
+    let SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    let recognition = new SpeechRecognition();
+
+    let synth = window.speechSynthesis;
+    
+    recognition.continuous = false;
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onresult = async function (e) {
+      log("voice is activated");
+      let index = e.resultIndex
+      let finalResult = e.results[index][0].transcript.trim();
+      
+      if(!finalResult){
+        log("no result")
+        readAloud(finalResult="I did not get any input, please provide a country name, for example Nigeria ");
+        return
+      }
+      // read the result out loud
+      readAloud(finalResult)
+    };
+
+    
+
+    // recognition.onend = ()=>{
+    //   recognition.stop();
+    // }
+
+    voiceStart.onclick = (e) => {
+      log("button hold")
+      setTimeout(() => {
+        voiceStart.style.display = "none";
+        voiceStop.style.display = "flex";
+      }, 1000);
+      recognition.start();
+    };
+
+    voiceStop.onclick = (e) => {
+      log("button left")
+      voiceStop.style.display = "none";
+      voiceStart.style.display = "flex";
+
+      recognition.stop();
+      // synth.cancel()
+    };
+
+
+    function readAloud(message){
+      // once result is gotten, make a request to server and process it
+      log(message)
+
+      socket.emit("voice chat", message)
+
+      socket.on("voiceRecognition message", (data)=>{
+        log(data)
+        if(data.botData){
+          log(data.botData)
+          speech.text = data.botData;
+
+          synth.speak(speech);
+          // synth.cancel()
+        }
+        else{
+          speech.text = "Something went wrong while processing your data";
+
+          synth.speak(speech);
+        }
+      })
+
+      let messages = "pls hold on"
+      var speech = new SpeechSynthesisUtterance(messages);
+
+      speech.volume = 1
+      speech.rate = 1;
+      speech.pitch = 3;
+      speech.text = "please hold on while data is been process"
+      synth.speak(speech);
+    }
+  }
+
+  voiceReg();
+};
+
+
+// Traget Heart Rate 
+
+const TARGET_HEART_RATE = ()=>{
+  // global variables
+  let ageInput = $("[data-heart-age]");
+  let  heartBtn = $(".heartrate-btn");
+  let resultCont = $("[data-heart-result]");
+  let closeCont = $("[data-close-heart-container]");
+  let heartBeatResult = $("[data-heart-result-value]");
+  let heartBeat = new Audio("./statics/audio/HeartBeat.mp3");
+  let historyCont = $("[data-heart-rate-history]");
+  let historyBtn = $("[data-history-btn]");
+  let historyTable = $("[data-heart-history]");
+  let historyClose = $("[data-close-history]")
+  let historyClear = $("[data-clear-history]")
+  let saveBtn = $("[data-save-heart-value]");
+  let MHR; // Maximum Heart Rate
+  let defaultValue = 220;
+  let rest = 70;
+  let intensity = 0.85;
+
+
+  // heart result
+  let storeHeartRate = [];
+  let heartResult = {};
+
+  heartBtn.onclick = ()=>{
+    if(ageInput.value == ""){
+      alert("Input cant be empty");
+      return;
+    }
+    else if(ageInput.value == 0 || ageInput.value < 0){
+      alert("Age cant be zero or less than zero");
+      return;
+    }
+    else if(ageInput.value == 0 || ageInput.value > 300){
+      alert("No one has lived up to that age in this modern days.");
+      return;
+    }
+    else{
+      heartBeat.play();
+      heartBeat.loop = true;
+      targetHeartRate(ageInput.value)
+      setTimeout(() => {
+        resultCont.style.display = "flex"
+      }, 200);
+    }
+  }
+
+  // close heart container
+  closeCont.onclick = ()=>{
+    resultCont.style.display = "none"
+    heartBeatResult.classList.remove("anime");
+    heartBeatResult.textContent =  "";
+    heartBeat.pause();
+    heartBeat.currentTime = 0;
+  }
+
+  // save result in localstorage
+  saveBtn.onclick = ()=>{
+    heartResult["created"] = moment(new Date().getTime()).startOf("hour").fromNow()
+    heartResult["max_heart_rate"] = MHR;
+    heartResult["heart_rate_reserved"] = MHR - 63;
+
+    storeHeartRate.push(heartResult)
+    
+    // store in localstorage
+    if(localStorage.getItem("heart_rate") == null){
+      localStorage.setItem("heart_rate", JSON.stringify(storeHeartRate))
+      return;
+    }
+    let storage = localStorage.getItem("heart_rate");
+
+    storage = storage ? JSON.parse(storage) : [];
+
+    storage.push(heartResult);
+
+    localStorage.setItem("heart_rate", JSON.stringify(storage))
+    
+    alert("Save successfully");
+  }
+
+  // claulate target heart rate
+
+  function targetHeartRate(value){
+    let result = ((defaultValue - value) * intensity) + rest;
+    MHR = Math.floor(result);
+    heartBeatResult.classList.add("anime");
+    setTimeout(() => {
+      heartBeatResult.textContent = `${MHR} bpm`;
+      heartBeat.pause();
+      heartBeat.currentTime = 0;
+    }, 3000);
+  }
+  
+
+  // history
+  // hide and show history
+  historyBtn.onclick = ()=>{
+    historyCont.style.display = "flex"
+  }
+
+  historyClose.onclick = ()=>{
+    historyCont.style.display = "none"
+  }
+
+  // clear all history
+  historyClear.onclick = ()=>{
+    localStorage.setItem("heart_rate", []);
+  }
+
+  // populate history
+  function populateHistory(){
+    let localHistory = localStorage.getItem("heart_rate");
+
+    if(localHistory == null || localHistory == ""){
+      historyTable.innerHTML = `<div>No heart rate History.</div>`;
+      historyClear.style.display = "none"
+      return;
+    }else{
+      historyClear.style.display = "flex"
+      historyTable.innerHTML = ""
+      JSON.parse(localHistory).forEach((data)=>{
+        historyTable.innerHTML += `
+          <tr>
+            <td>${data.created}</td>
+            <td>${data.heart_rate_reserved}</td>
+            <td>${data.max_heart_rate}</td>
+          </tr>
+        `;
+      })
+    }
+   
+  }
+  setInterval(() => {
+    populateHistory()
+  }, 500);
+}

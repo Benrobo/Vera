@@ -1,0 +1,252 @@
+<%- include("./inc/head.ejs") %> 
+    
+    <div class="header">
+        <div class="ovl">
+            <!-- navbar -->
+            <nav class="navbar">
+                <h2><b><span class="deco">VERA</span></b></h2>
+            </nav>
+
+            <div class="txt-cont">
+                <h1>PERSONAL <span class="deco" id="head"></span> CARE TOOLS</h1>
+                <br>
+                <p id="head-txt"></p>
+                <br>
+                <button class="btn start">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- section -->
+    <section class="section">
+        <div class="main-cont">
+            <div class="services">
+                <div class="head">
+                    <h3>Manage Your Health Anywere with PHT</h3>
+                    <p>Our health application tends to provide multipurpose tools which can be used in the health factor, ranging from BMI Calculator, Disease Tracker, Disease Dictionary, Healthy Food Recipes, Top Health News.....etc</p>
+                </div>
+                <br>
+                <div class="box-cont">
+                    <div class="boxes">
+                        <div class="box" data-aos="zoom-in">
+                            <span class="icon">
+                                <ion-icon name="calculator"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>BMI Calculator</h2>
+                        </div>
+                        <div class="box" data-aos="zoom-in">
+                            <span class="icon">
+                                <ion-icon name="medical"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Coronavirus Tracker</h2>
+                        </div>
+                        <div class="box" data-aos="fade-up-right">
+                            <span class="icon">
+                                <ion-icon name="book"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Disease Dictionary</h2>
+                        </div>
+                        <div class="box" data-aos="fade-up-right">
+                            <span class="icon">
+                                <ion-icon name="fast-food"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Healthy Meal Planner</h2>
+                        </div>
+                        <div class="box" data-aos="zoom-in-down">
+                            <span class="icon">
+                                <ion-icon name="musical-notes"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Meditation</h2>
+                        </div>
+                        <div class="box" data-aos="zoom-in-down">
+                            <span class="icon">
+                                <ion-icon name="heart"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Heart Rate Test</h2>
+                        </div>
+                        <div class="box" data-aos="zoom-in-down">
+                            <span class="icon">
+                                <ion-icon name="newspaper"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Health News</h2>
+                        </div>
+                        <div class="box" data-aos="zoom-in-down">
+                            <span class="icon">
+                                <ion-icon name="list-circle"></ion-icon>
+                            </span>
+                            <br>
+                            <h2>Food Recipes</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <!-- footer container -->
+        <footer class="footer">
+            <div class="cont">
+                <p>2021 All right reseved</p>
+                <h6>Multipurpose Health Care Tools</h6>
+                <p>Created by : <a href="https://github.com/benrobo">Benrobo</a></p>
+            </div>
+        </footer>
+        </div>
+
+    </section>
+
+
+    <!-- covid 19 modal -->
+    <div class="captcha-modal">
+        <div class="captcha-form">
+            <div class="attention-cont">
+                <button class="btn">
+                    <span class="icon"><ion-icon name="alert-circle"></ion-icon></span>
+                    ATTENTION
+                </button>
+            </div>
+            <br>
+            <div class="img-cont">
+                <img src="./statics/img/section/a.png" alt="" class="img-a mask-img">
+            </div>
+            <br>
+            <div class="alrt-cont">
+                <h1>No Face Mask</h1>
+                <h1>No Entry</h1>
+            </div>
+            <br>
+            <div class="action">
+                <button class="wearbtn wear">Wear Mask</button>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script src="./statics/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        
+
+
+        let startbtn = document.querySelector(".start")
+        let captchaModal = document.querySelector(".captcha-modal");
+        let capForm = document.querySelector(".captcha-form");
+        let wearbtn = document.querySelector('.wearbtn');
+        let maskimg = document.querySelector(".mask-img");
+        let alrtcont = document.querySelector(".alrt-cont");
+
+        startbtn.onclick = ()=>{
+            captchaModal.style.display = "flex"
+            
+            setTimeout(() => {
+                capForm.classList.add("anime")
+            }, 300);
+        }
+
+        function toggleFacemask(){
+            wearbtn.onclick = ()=>{
+                wearbtn.innerHTML = "!Hold on ,Wearing Facemask"
+
+                setTimeout(() => {
+                    maskimg.src = "./statics/img/section/b.png"
+
+                }, 1000);
+
+                setTimeout(() => {
+                    alrtcont.innerHTML = `
+                        <h1>Mask Warn.<h1>
+                    `
+                    
+
+                    wearbtn.innerHTML = ""
+                    wearbtn.innerHTML = "Dashboard"
+
+                    redirectUser()
+                }, 1500);
+            }
+        }
+
+        toggleFacemask()
+
+        function redirectUser(){
+            if(wearbtn.innerHTML.toLowerCase() == "dashboard"){
+                wearbtn.onclick = async ()=>{
+                    // ask the user for username;
+                    let username = prompt("Username needed");
+                    
+                    if(username == ""){
+                        alert("Please username is required");
+                        username = prompt("Username needed");
+                    }
+                    else if(username.length > 10 || username.length < 0){
+                        alert("username length should be 10");
+                        username = prompt("Username needed");
+                    }
+                    else{
+                        const sendData = {
+                            username: username,
+                            created_at: new Date().getTime()
+                        }
+                        let req = await fetch("/auth/user", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(sendData)
+                        })
+
+                        let res = await req.json();
+
+                        if(res && res.status == 200){
+                            console.log(res)
+                            window.location = "/dashboard"
+                        }
+                        else{
+                            alert("Something went wrong")
+                        }
+                    }
+                    return;
+                }
+            }
+            
+        }
+
+        function typeFunc(){
+            new TypeIt("#head-txt", {
+                strings: "Personal Multipurpose Health Care and Awareness Tools.",
+                speed: 75,
+                loop: true
+            }).go();
+
+            new TypeIt("#head", {
+                speed: 100,
+                waitUntilVisible: true
+            })
+            .type("HEALTH", {delay: 500})
+            .delete(6)
+            .type("FITNESS", {delay: 500})
+            .delete(7)
+            .type("HEART RATE", {delay: 500})
+            .delete(10)
+            .type("Covid19 ChatBot", {delay: 500})
+            .go();
+        }
+        typeFunc()
+
+        AOS.init({
+            delay: 1,
+            duration: 3000
+        });
+    </script>
+</body>
+</html>

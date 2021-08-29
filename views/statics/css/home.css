@@ -1,0 +1,395 @@
+@import url("./colors.css");
+
+html{
+	scroll-behavior: smooth;	
+}
+
+body{
+	width:100%;
+	height:100vh;
+	padding:0px;
+	margin: 0px;
+	background: var(--dark-bg) !important;
+	font-family: 'Poppins', sans-serif;
+	overflow-x:hidden;
+}
+
+a{
+	text-decoration: none;
+}
+li{
+	list-style-type: none;
+}
+
+.deco{
+	color: var(--yellow-light);
+}
+
+
+
+/* Home.html page */
+
+/* header */
+.header{
+	width: 100%;
+	height:70vh;
+	padding:0px;
+	position: relative;
+	margin: 0px;
+	background: url("../img/header/head.png");
+	background-size: cover;
+	background-position:center;
+}
+.header .ovl{
+	position: absolute;
+	width: 100%;
+	height:70vh;
+	background:rgba(0,0,0,.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+/* navbar */
+.header .ovl .navbar{
+	position: absolute;
+	left:10px;
+	top:10px;
+	font-weight: 500;
+	color: #ccc;
+}
+
+
+.header .ovl .txt-cont{
+	text-align: center;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.header .ovl .txt-cont p{
+	width: 400px;
+}
+
+.header .ovl .txt-cont .start{
+	padding: 10px 15px;
+	background: var(--yellow-light);
+	transition: .1s;
+	animation: blink .5s linear infinite;
+	border-radius: 30px;
+}
+.header .ovl .txt-cont .start:hover{
+	transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.captcha-modal{
+	width:100%;
+	height: 100vh;
+	position: fixed;
+	top:0px;
+	left: 0px;
+	background: rgba(0, 0, 0, 0.9);
+	display: none;
+}
+
+.captcha-form{
+	width: 350px;
+	height: auto;
+	background: var(--dark-md);
+	position: absolute;
+	left:50%;
+	top:-50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+.captcha-form.anime{
+    transition: 1s;
+    top:50%;
+}
+
+.captcha-form .attention-cont{
+	width: 100%;
+	padding:10px;
+}
+
+.captcha-form .attention-cont .btn{
+	width: 100%;
+	background: var(--yellow-light);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 26px;
+	font-weight: 500;
+}
+.captcha-form .img-cont{
+	width: 250px;
+	height:200px;
+	text-align: center;
+	/* background:red; */
+	margin: 0px auto;
+	position: relative;
+}
+.captcha-form .img-cont img{
+	position: absolute;
+	left: 0px;
+	width: 100%;
+}
+
+.captcha-form h1{
+	text-align: center;
+	font-size: 25px;
+	color: #ccc;
+}
+.captcha-form .action{
+	display: flex;
+	justify-content: space-between;
+	padding: 12px;
+}
+.captcha-form .action .wearbtn{
+	padding: 10px 25px;
+	border: none;
+	outline: none;
+}
+.captcha-form .action .wearbtn.wear{
+	background: var(--yellow-light);
+	font-weight: 400;
+	border-radius: 30px;
+}
+.captcha-form .action .wearbtn:focus{
+	border: 2px solid var(--yellow-dark);
+}
+
+/* section container */
+
+.section{
+    width: 100%;
+    height:100vh;
+    position: relative;
+    top:30px;
+}
+.section .main-cont{
+    width:100%;
+    margin: 10px auto;
+	height:100vh;
+}
+
+.section .services{
+    width:100%;
+    padding:0px;
+}
+
+.section .services .head{
+    width:80%;
+    height:auto;
+    margin:12px auto;
+    color:#ccc;
+    text-align: center;
+}
+
+.section .services .box-cont{
+    background: var(--dark);
+    width: 100%;
+}
+
+.section .services .boxes{
+    width: 80%;
+    height:auto;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin:10px auto;
+}
+
+.section .services .boxes .box{
+    width: 250px;
+    height:200px;
+    box-shadow: 0px 0px 3px #000;
+    margin:10px auto;
+    background: var(--dark-md);
+    border-left: 10px solid var(--yellow-light);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color:#ccc;
+    position: relative;
+    overflow-y: hidden;
+    transition: .5s;
+}
+
+.section .services .boxes .box:hover ion-icon{
+    transition: .2s;
+    font-size: 80px;
+}
+.section .services .boxes .box:hover::before{
+    transition: .2s;
+    animation: slide 1s linear;
+}
+
+
+@keyframes slide{
+    0%{
+        width:100px;
+    }
+    50%{
+        width: 0px;
+    }
+    100%{
+        width: 100px;
+    }
+}
+.section .services .boxes .box::before{
+    width: calc(250px/2);
+    height: 200px;
+    content: "";
+    background: var(--dark-bg);
+    position: absolute;
+    left:0px;
+}
+
+.section .services .boxes .box h2{
+    font-size: 20px;
+    font-weight: 300;
+    z-index: 100;
+}
+
+.section .services .boxes .box ion-icon{
+    font-size: 40px;
+    color:var(--yellow-light);
+}
+
+.section .footer{
+	width: 100%;
+	text-align: center;
+	/* background: var(--dark); */
+	color: #ccc;
+	padding: 20px;
+}
+
+@media (min-width:300px){
+	.header .ovl .txt-cont{
+		width: 300px;
+	}
+	.captcha-form{
+		width: 320px;
+	}
+	.captcha-form .attention-cont .btn{
+		width: 100%;
+	}
+	.captcha-form .img-cont{
+		width:150px;
+	}
+	.header .ovl .txt-cont p{
+		width: 300px;
+	}
+}
+
+@media (min-width:600px){
+	.header .ovl .txt-cont{
+		width: 300px;
+	}
+	.captcha-form{
+		width: 320px;
+	}
+	.captcha-form .attention-cont .btn{
+		width: 100%;
+	}
+	.captcha-form .img-cont{
+		width:150px;
+	}
+	.header .ovl .txt-cont p{
+		width: 300px;
+	}
+}
+
+@media (min-width:768px){
+	.header .ovl .txt-cont{
+		width: 400px;
+	}
+	.captcha-form{
+		width: 320px;
+	}
+	.captcha-form .attention-cont .btn{
+		width: 100%;
+	}
+	.captcha-form .img-cont{
+		width:200px;
+	}
+	.header .ovl .txt-cont p{
+		width: 400px;
+	}
+}
+
+@media (min-width:1200px){
+	.header .ovl .txt-cont{
+		width: 400px;
+	}
+	.captcha-form{
+		width: 320px;
+	}
+	.captcha-form .attention-cont .btn{
+		width: 100%;
+	}
+	.captcha-form .img-cont{
+		width:200px;
+	}
+	.header .ovl .txt-cont p{
+		width: 400px;
+	}
+}
+
+@media (min-width:1440px){
+	.header .ovl .txt-cont{
+		width: 400px;
+	}
+	.captcha-form{
+		width: 320px;
+	}
+	.captcha-form .attention-cont .btn{
+		width: 100%;
+	}
+	.captcha-form .img-cont{
+		width:200px;
+	}
+	.header .ovl .txt-cont p{
+		width: 400px;
+	}
+}
