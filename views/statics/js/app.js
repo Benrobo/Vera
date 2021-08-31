@@ -1,11 +1,11 @@
 addEventListener("load", () => {
   tabFunc();
-  TARGET_HEART_RATE()
-  COVID_CHATBOT();
-  HEALTH_NEWS();
+  // TARGET_HEART_RATE()
+  // COVID_CHATBOT();
+  // HEALTH_NEWS();
   BMI_ALGORITHM();
   // MEDITATION_FUNC();
-  DISEASE_DICT();
+  MUSCLE_BUILDING();
 });
 
 // Utilities
@@ -33,7 +33,7 @@ function tabFunc() {
 
   let bmibox = document.querySelector(".bmi-calc");
   let corobox = document.querySelector(".coro-tracker");
-  let diseaseDict = document.querySelector(".disease-dict");
+  let musclebuilder = document.querySelector(".muscle-builder");
   let foodRecipe = document.querySelector(".food-recipe");
   let healthNews = document.querySelector(".health-news");
   let meditation = document.querySelector(".meditation");
@@ -41,7 +41,7 @@ function tabFunc() {
   let burgerMenu = $(".burger");
   let responsiveMenu = $("[data-responsive-menu]");
 
-  tabboxes[6].style.display = "block";
+  tabboxes[2].style.display = "block";
 
   tabs.forEach((tab) => {
     tab.onclick = (e) => {
@@ -71,10 +71,10 @@ function tabFunc() {
           meditation.style.display = "none";
           heartRate.style.display = "none";
           break;
-        case "disease-dict":
+        case "muscle-builder":
           tabboxes[0].style.display = "none";
           corobox.style.display = "none";
-          diseaseDict.style.display = "block";
+          musclebuilder.style.display = "block";
           foodRecipe.style.display = "none";
           healthNews.style.display = "none";
           meditation.style.display = "none";
@@ -163,10 +163,10 @@ const BMI_ALGORITHM = function () {
   let figuredir = "./statics/img/figures";
   let bmiInputs = $all(".bmi-inputs");
   let foodCont = $("[data-food-container]");
-  let sharebtn = $("[data-bmi-share]");
   let figure = $(".figure");
   let userFigure;
 
+  let bmiStore = [];
   let bmiData = {};
 
   let { fboy, fgirl, sboy, sgirl } = {
@@ -233,10 +233,10 @@ const BMI_ALGORITHM = function () {
       // bmiData.userFigure = userFigure;
       bmiData.bmi = bmi;
 
-      // // check if bmiData object is not empty and show the sharebutton
-      // if(Object.keys(bmiData).length !== 0){
-      //   sharebtn.style.display = "flex"
-      // }
+      // save to localStorage
+      bmiStore.push(bmiData);
+
+      localStorage.setItem("bmi_data", JSON.stringify(bmiStore))
 
       if (bmi == null) {
         resultcont.innerHTML = `
@@ -956,3 +956,223 @@ const TARGET_HEART_RATE = ()=>{
     populateHistory()
   }, 500);
 }
+
+
+// MUSCLE BUILDING
+
+const MUSCLE_BUILDING = ()=>{
+  // global variables
+
+  let currWeight = $("[data-curr-weight]"),
+      currHeight = $("[data-curr-height]"),
+      currworkoutTarget = $("[data-workout-target]"),
+      workoutCompleted = $("[data-curr-workout-completed]"),
+      muscleImg = $("[data-muscle-img]"),
+      muscleSelect = $("[data-muscle-select]"),
+      musclePreview = $("[data-select-preview]"),
+      startWorkoutBtn = $("[data-start-workout]"),
+      workoutTimerCont = $(".workout-timer-cont"),
+      workoutTimer = $("[data-workout-timer]"),
+      timerStopBtn = $("[data-timer-stop-btn]"),
+      selectValue,
+      exerciseBody = $("[data-exercise-body]"),
+      reccBody = $("[data-recc-body]"),
+      workoutTarget = 0,
+      workOutCount = 0,
+      totalWorkout = 0
+
+
+  // get daat from localStorage and replace the cards textContent
+  setInterval(() => {
+    if(localStorage.getItem("bmi_data") == null){
+      currWeight.innerHTML = `0kg`
+      currHeight.innerHTML = `0ft`
+    }else{
+      let {gender, hUnit, height, wUnit, weight} = JSON.parse(localStorage.getItem("bmi_data"))[0];
+      currWeight.innerHTML = `${weight}${wUnit}`
+      currHeight.innerHTML = `${height}${hUnit}`
+    }
+
+    let localWorkoutCount = JSON.parse(localStorage.getItem("workout_data"))
+
+
+    if(localWorkoutCount !== null){
+      localWorkoutCount.forEach((data)=>{
+        workoutCompleted.innerHTML = data.totalWorkout
+        currworkoutTarget.textContent = data.workoutTarget
+      })
+      return;
+    }
+    else{
+      workoutCompleted.innerHTML = "0"
+      currworkoutTarget.textContent = "0"
+    }
+  }, 1000);
+
+
+  // Workout functionality
+
+  const workOutFunc = ()=>{
+    // fill up select value
+    let muscles = "FOREARM NECK trapezius deltoid chest biceps abs obliques".split(" ")
+
+    for (let i = 0; i < muscles.length; i++) {
+      let option = document.createElement("option");
+      option.value = muscles[i].toUpperCase();
+      option.textContent = muscles[i].toUpperCase();
+      
+      muscleSelect.appendChild(option)
+    }
+
+    // set the muscleImg default value
+    let selectValue
+    selectValue = muscleSelect.value;
+
+    muscleImg.src = `./statics/img/muscles/${selectValue.toLowerCase()}.png`
+
+    // handle select muscle
+    muscleSelect.onchange = ()=>{
+      selectValue = muscleSelect.value;
+
+      muscleImg.src = `./statics/img/muscles/${selectValue.toLowerCase()}.png`
+      musclePreview.innerHTML = `
+        <p class="muscle-select-txt">${selectValue}</p>
+        <ion-icon class="select-btn" name="chevron-forward-outline"></ion-icon>
+      `
+    }
+
+    // start workout
+    startWorkoutBtn.onclick = ()=>{
+      let userWorkoutValue = prompt("Plese specify target workout value.");
+      
+      let workoutDataStore = [];
+      let workoutData = {};
+
+      if(userWorkoutValue == ""){
+        alert("Target value is required")
+        return;
+      }
+      else if(userWorkoutValue.length >= 10){
+        alert("Maximum target value length is 10")
+        return;
+      }
+      else if(isNaN(userWorkoutValue)){
+        alert("Workout Target value must be a Number")
+        return;
+      }
+      else{
+        workoutTarget = parseInt(userWorkoutValue);
+       let workoutTimerValue = parseInt(userWorkoutValue);
+        
+        workoutTimerCont.style.display = "flex";
+
+        let startWorkoutInterval = setInterval(() => {
+          workoutTimerValue--;
+          if(workoutTimerValue <= 0){
+            workoutTimerValue = 0;
+            workoutTimer.textContent = workoutTimerValue;
+            return;
+          }
+          workoutTimer.textContent = workoutTimerValue;
+          
+          timerStopBtn.onclick = ()=>{
+            clearInterval(startWorkoutInterval)
+            totalWorkout = workoutTarget - workoutTimerValue;
+            workoutTimerCont.style.display = "none";
+
+
+            // saveData to localStorage
+            workoutData["workoutTarget"] = workoutTarget;
+            workoutData["totalWorkout"] = totalWorkout;
+            workoutData["workoutType"] = muscleSelect.value + " Muscle";
+            workoutData["created"] = new Date().getTime();
+
+            workoutDataStore.push(workoutData)
+
+            if(localStorage.getItem("workout_data") == null){
+              localStorage.setItem("workout_data", JSON.stringify(workoutDataStore))
+              return;
+            }
+
+            let localWorkoutValue = JSON.parse(localStorage.getItem("workout_data"));
+
+            localWorkoutValue.push(workoutData)
+
+            localStorage.setItem("workout_data", JSON.stringify(localWorkoutValue))
+          }
+
+
+        }, 1000);
+      }
+    }
+
+    // populate worout history
+    const populateWorkoutHistory = ()=>{
+      if(localStorage.getItem("workout_data") == null){
+        exerciseBody.innerHTML = "You dont have any workout history here."
+        return;
+      }
+
+      let workoutLocal = JSON.parse(localStorage.getItem("workout_data"));
+
+      exerciseBody.innerHTML = ""
+
+      workoutLocal.forEach(data => {
+        let title = data.workoutType.split(" ");
+        let firsIndexFirstLetter = title[0].slice(0,1),
+            secondIndexFirstLetter = title[1].slice(0,1);
+        exerciseBody.innerHTML  += `
+        <div class="exercise-card">
+          <div class="exercise-img">${firsIndexFirstLetter}${secondIndexFirstLetter}</div>
+          <div class="exercise-txt">
+              <h5>${data.workoutType}</h5>
+              <small>${data.totalWorkout} Times</small>
+          </div>
+          <div class="exercise-date">
+              AUG 19
+          </div>
+        </div>
+        `;
+      });
+    }
+    
+    setInterval(() => {
+      populateWorkoutHistory()
+    }, 1000);
+  }
+  workOutFunc()
+
+
+
+  // recommendation functionality
+
+  const recommendationFunc = async ()=>{
+
+    // get related videos from select value;
+    let req = await fetch("/api/getMuscle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({value: muscleSelect.value})
+    })
+
+    let response = await req.json();
+
+
+    log(response)
+
+    return;
+
+
+
+
+    let reccCard = $("[data-recc-card]");
+    if(reccCard){
+      reccCard.onclick = (e)=>{
+        let id;
+      }
+    }
+  }
+  recommendationFunc()
+} 

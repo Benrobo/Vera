@@ -82,6 +82,11 @@ router.get("/api/fitness", async (req, res) => {
 });
 
 
+// get muscle fitness route
+router.get("/api/getMuscle", (req, res)=>{
+  res.send("hey")
+})
+
 module.exports = {
   router,
 };

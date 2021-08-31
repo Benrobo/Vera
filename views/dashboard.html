@@ -31,12 +31,12 @@
                             <small class="tool-tip-cont">Coronavirus Tracker</small>
                         </div>
                     </li>
-                    <li data-tab-cont="disease-dict">
+                    <li data-tab-cont="muscle-builder">
                         <span class="icon">
-                            <ion-icon name="book"></ion-icon>
+                            <ion-icon name="barbell-outline"></ion-icon>
                         </span> 
                         <div class="tool-tip">
-                            <small class="tool-tip-cont">Disease Dictionary</small>
+                            <small class="tool-tip-cont">Muscle Builder</small>
                         </div>
                     </li>
                     <li data-tab-cont="food-recipe">
@@ -232,49 +232,144 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Disease  Dict -->
-                    <div class="box disease-dict" data-tab-box="disease-dict">
-                        <div class="dict-cont">
+                    <!--  muscle-builder -->
+                    <div class="box muscle-builder" data-tab-box="muscle-builder">
+                        <div class="muscle-builder">
                             <div class="head">
-                                <h1>Disease Dictionary</h1>
-                                <p>Lookup word and never forget it.</p>
+                                <h1>Muscle Builder</h1>
+                                <small>Build and Heal your Muscle.</small>
                             </div>
-                            <div class="search-container">
-                                <input type="text" placeholder="Start searching" autofocus class="searchbox dict-input">
+                            <div class="cards-cont">
+                                <div class="cards curr-weight">
+                                    <div class="img-cont">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                    </div> 
+                                    <div class="cont">
+                                        <small>Current Weight</small>
+                                        <h4 data-curr-weight>34kg</h4>
+                                    </div>
+                                </div>
+                                <div class="cards curr-height">
+                                    <div class="img-cont">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                    </div> 
+                                    <div class="cont">
+                                        <small>Current Height</small>
+                                        <h4 data-curr-height>34ft</h4>
+                                    </div>
+                                </div>
+                                <div class="cards curr-age">
+                                    <div class="img-cont">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                    </div> 
+                                    <div class="cont">
+                                        <small>Workout Target</small>
+                                        <h4 data-workout-target>200</h4>
+                                    </div>
+                                </div>
+                                <div class="cards workout">
+                                   <div class="img-cont">
+                                    <ion-icon name="barbell-outline"></ion-icon>
+                                   </div> 
+                                   <div class="cont">
+                                       <small>Workout Completed</small>
+                                       <h4 data-curr-workout-completed>240</h4>
+                                   </div>
+                                </div>
                             </div>
                             <br>
-                            <div class="result-container dict-result-cont">
-                                <div class="result-card">
-                                    <div class="head">
-                                        <span class="letter">A</span>
+                            <div class="workout-container">
+                                <div class="muscle-cont img-cont">
+                                    <img src="./statics/img/Muscles/chest.png" alt="" class="img-fluid" data-muscle-img>
+                                </div>
+                                <div class="result-cont">
+                                    <!-- select muscles -->
+                                    <div class="muscle-select-cont">
+                                        <p>Select Muscle Building</p>
+                                        <select data-muscle-select></select>
+                                        <br>
+                                        <div class="muscle-preview-cont" data-select-preview></div>
+                                        <br>
+                                        <div class="action">
+                                            <button class="btn start-workout" data-start-workout>
+                                                Start Workout
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="body mt-5">
-                                        <h4>coronavirus</h4>
-                                        <span>kəˈrəʊnəˌvʌɪrəs</span>
+                                </div>
+
+                                <!-- workout timer -->
+                                <div class="workout-timer-cont">
+                                    <div class="timer-cont">
+                                        <h1 class="timer-txt" data-workout-timer>
+                                            120
+                                        </h1>
+                                        <br>
+                                        <br>
+                                        <button class="btn btn-danger" data-timer-stop-btn>
+                                            Stop and Save
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- dictionary modal -->
-                        <div class="dict-modal-cont">
-                            <div class="dict-modal-box">
-                                <div class="head">
-                                    <h1>A</h1>
-                                    <h3 class="px-3">Amaphombia</h3>
-                                    <div class="main">
-                                        <span>[ˈrəʊbɒt]</span>
-                                        <span class="audio" data-audio="">
-                                            <ion-icon name="mic" data-dict-mic></ion-icon>
-                                        </span>
+                            <br>
+                            <!-- main-workout-history -->
+                            <div class="main-history">
+                                <!-- last exercise -->
+                                <div class="last-exercise">
+                                    <div class="head">
+                                        <p>Last Exercise</p>
+                                        <button class="btn btn-danger">
+                                            <small>clear all</small>
+                                        </button>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <div class="exercise-body" data-exercise-body>
+                                        <div class="exercise-card">
+                                            <!-- <div class="exercise-img">CM</div>
+                                            <div class="exercise-txt">
+                                                <h5>Chest Muscle</h5>
+                                                <small>15 Times</small>
+                                            </div>
+                                            <div class="exercise-date">
+                                                AUG 19
+                                            </div> -->
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="body mt-4">
-                                    <h5>Origin</h5>
-                                    <small class="ml-5 px-3">Lorem ipsum dolor sit amet.</small>
-                                    <br>
-                                    <h5>Noun</h5>
-                                    <p>Definition</p>
-                                    <small class="ml-5 px-3">Lorem ipsum dolor sit amet.</small>
+                                <br>
+                                <!-- recommended exercise -->
+                                <div class="recommend-exercise">
+                                    <p>Recommended Exercise</p>
+                                    <hr>
+                                    <div class="recc-cont" data-recc-body>
+                                        <div class="recc-card" data-recc-card data-recc-id="450">
+                                            <div class="img-cont" style="background: url('./statics/img/section/medi.png'); background-size:cover; background-position:center;"></div>
+                                            <br>
+                                            <div class="body">
+                                                <span class="recc-title">
+                                                    Chest Push
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- recommended video-modal -->
+                                    <div class="recc-modal">
+                                        <div class="recc-modal-cont">
+                                            <video 
+                                            id="video"
+                                            class="video"
+                                            preload="auto"
+                                            width="640"
+                                            height="264"
+                                            poster="https://images.pexels.com/videos/5319750/pexels-photo-5319750.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500 500w, https://images.pexels.com/videos/5319750/pexels-photo-5319750.jpeg"
+                                            data-setup="{}" controls muted class="video-cont">
+                                                <source src="https://player.vimeo.com/external/456101983.sd.mp4?s=296c962da68150d86abc2ad474a9803d82c93bd7&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -507,142 +507,280 @@ li{
 	pointer-events: none;
 }
 
-/* DISEASE DICT CONTAINER */
-.section .main-cont .boxes-cont .disease-dict .dict-cont{
+
+
+
+
+/* muscle-builder CONTAINER */
+.section .main-cont .boxes-cont .muscle-builder{
 	width: 100%;
 	height: 100vh;
 	position: relative;
-
+	margin:0px;
+	padding:0px;
 }
 
-.section .main-cont .boxes-cont .disease-dict .dict-cont .head{
+.section .main-cont .boxes-cont .muscle-builder .head{
+	width:100%;
+	height:auto;
+	padding:10px;
 	text-align: center;
 }
-.section .main-cont .boxes-cont .disease-dict .dict-cont .search-container{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 80%;
-	margin: 10px auto;
-}
-
-.section .main-cont .boxes-cont .disease-dict .dict-cont .search-container .searchbox{
-	width: 100%;
-	padding: 10px 45px;
-	background: var(--dark-md);
-	color: #ccc;
-	font-weight: 300;
-	border-radius: 30px;
-	border: none;
-	outline: none;
-	margin: 20px auto;
-}
-.section .main-cont .boxes-cont .disease-dict .dict-cont .search-container .searchbox:focus{
-	border: none;
-}
-
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container{
-	display: flex;
-	align-items: center;
-	justify-content:center;
-	width: 80%;
-	margin: 10px auto;
-	flex-wrap: wrap;
-}
-
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card {
-	width: 200px;
-	height:200px;
-	padding:20px;
-	border-radius: 10px;
-	background: var(--dark-md);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 10px auto;
-	flex-wrap: wrap;
-	cursor: pointer;
-}
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card:hover{
-	background: var(--dark);
-}
-
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card .head .letter{
-	font-size: 40px;
-	padding:12px 35px;
-	background: var(--dark-bg);
-	border-radius: 6px;
-	font-weight: 800;
-}
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card .body{
-	position: relative;
-	top:10px;
-	max-width: 85%;
-}
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card .body h4{
+.section .main-cont .boxes-cont .muscle-builder .head h1{
 	font-size: 20px;
-	font-weight: 300;
 }
 
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card .body span,
-.section .main-cont .boxes-cont .disease-dict .dict-cont .result-container .result-card .body p{
-	font-size: 15px;
-	font-weight: 300;
-}
-
-
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont{
+.section .main-cont .boxes-cont .muscle-builder .cards-cont{
 	width: 100%;
-	height:100vh;
-	display: flex;
-	/* align-items: center; */
-	justify-content: center;
-	position: fixed;
-	top:0px;
-	left:0px;
-	background:rgba(0,0,0,.7);
-	display: none;
-}
-
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont .dict-modal-box{
-	width: 55%;
 	height:auto;
-	max-height: 400px;
-	background: var(--dark-md);
-	position: relative;
-	top:30px;
-	padding: 10px;
-	margin:20px auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin:12px auto;
+	padding:10px;
+	flex-wrap: wrap;
 }
 
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont .dict-modal-box .head{
-	text-align: start;
+.section .main-cont .boxes-cont .muscle-builder .cards-cont .cards{
+	width: 250px;
+	height:120px;
+	background: var(--dark-md);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin:10px;
+	border-radius: 2px;
+	border-right:6px solid var(--yellow-light);
+}
+.section .main-cont .boxes-cont .muscle-builder .cards-cont .cards .img-cont ion-icon{
+	font-size: 20px;
+	padding:15px;
+	background: var(--dark-bg);
+	border-radius: 50%;
+}
+/* workout container */
+.section .main-cont .boxes-cont .muscle-builder .workout-container{
+	width: 80%;
+	height:auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 350px;
+	position: relative;
+	margin:12px auto;
+	flex-wrap: wrap;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .muscle-cont.img-cont{
+	width: 370px;
+	height: 400px;
+	position: relative;
+	left: 0px;
+	top:0px;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .muscle-cont.img-cont .img{
+	position: absolute;
+	left: 0px;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont{
+	position: relative;
+	right: 0px;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont{
+	width: 100%;
+	padding:12px;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont select{
+	border: none;
+	border: 2px solid var(--yellow-light);
+	background: var(--dark-md);
+	color: #ccc;
+	padding: 5px 12px;
+	margin-bottom: 30px;
+	border-radius: 4px;
+	width: 100%;
+	text-align: center;
 }
 
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont .dict-modal-box .head .main{
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont .muscle-preview-cont{
+	padding:12px;
+	background: var(--dark-md);
+	border-radius: 10px;
 	display: flex;
 	align-items: center;
-	margin-left: 30px;
+	justify-content: space-between;
 }
-
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont .dict-modal-box .head .main ion-icon{
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont .muscle-preview-cont p{
+	font-size: 15px;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont .muscle-preview-cont ion-icon{
 	font-size: 20px;
-	padding:12px;
-	background: var(--dark);
+	padding: 15px;
+	background: var(--dark-bg);
 	margin: 10px;
 	border-radius: 50%;
-	cursor:pointer;
-	transform: scale(0.74);
 }
-.section .main-cont .boxes-cont .disease-dict .dict-modal-cont .dict-modal-box .head .main ion-icon:hover{
-	/* transition: 1s ease all; */
-	transform: scale(1);
-	border:2px solid var(--yellow-light);
+
+.section .main-cont .boxes-cont .muscle-builder .workout-container .result-cont .muscle-select-cont .action .btn{
+	width: 100%;
+	background: var(--yellow-light);
+	font-weight: 700;
+	border-radius: 30px;
 }
+
+.section .main-cont .boxes-cont .muscle-builder .workout-container .workout-timer-cont{
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	left:0px;
+	top:0px;
+	background: rgba(0, 0, 0, .7);
+	z-index: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .workout-timer-cont .timer-cont{
+	width: 300px;
+	height: 250px;
+	background: var(--dark-bg);
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border-radius: 10px;
+	border: 2px solid var(--yellow-light);
+}
+.section .main-cont .boxes-cont .muscle-builder .workout-container .workout-timer-cont .timer-cont .timer-txt{
+	font-size: 60px;
+}
+/* muscle main history cont */
+.section .main-cont .boxes-cont .muscle-builder .main-history{
+	width: 80%;
+	height:auto;
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-between;
+	position: relative;
+	margin:12px auto;
+	flex-direction: column;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise{
+	width: 100%;
+
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .head{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;	
+	flex-wrap: wrap;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body .exercise-card{
+	width: 300px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--dark-md);
+	padding:15px;
+	border-radius: 12px;
+	margin:12px;
+}
+
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body .exercise-card .exercise-img{
+	padding: 12px;
+	background: var(--yellow-light);
+	color: #000;
+	border-radius: 10px;
+	font-weight: 900;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body .exercise-card .exercise-txt{
+	width: 120px;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body .exercise-card .exercise-txt h5{
+	font-size: 14px;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .last-exercise .exercise-body .exercise-card .exercise-date{
+	font-size: 12px;
+	padding: 12px;
+	background: var(--dark-bg);
+	border-radius: 5px;
+}
+
+/* recommended exercise */
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise{
+	width: 100%;
+	height: auto;
+	padding: 12px;
+	margin: 10px;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card{
+	width:300px;
+	height:300px;
+	background: var(--dark-md);
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .img-cont{
+	width: 100%;
+	height: 200px;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .body{
+	padding: 10px;
+}
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .body span{
+	padding:10px 12px;
+	background: var(--dark-bg);
+	margin-top: 10px;
+	border-radius: 30px;
+	font-size: 13px;
+}
+
+/* recc modal */
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-modal{
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top:0px;
+	background: rgba(0, 0, 0, .7);
+	left: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-modal .recc-modal-cont {
+	width: 450px;
+	height: 400px;
+}
+
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-modal .recc-modal-cont video{
+	background: var(--dark-bg);
+	width: 100%;
+	height:400px;
+	margin: 10px auto;
+}
+
+
+
+
+
+
+
 
 
 @keyframes pulse{
@@ -746,9 +884,10 @@ li{
 	text-align: center;
 	padding: 12px;
 	margin:10px auto;
+}
+.coro-tracker .head p{
 	font-size: 25px;
 }
-
 /* voice recognition container */
 .coro-tracker .coro-container .voice-reg-cont{
 	display: flex;
