@@ -30,12 +30,12 @@
                             <small class="tool-tip-cont">Coronavirus Tracker</small>
                         </div>
                     </li>
-                    <li data-tab-cont="disease-dict">
+                    <li class="active"  data-tab-cont="muscle-builder">
                         <span class="icon">
-                            <ion-icon name="book"></ion-icon>
+                            <ion-icon name="barbell-outline"></ion-icon>
                         </span> 
                         <div class="tool-tip">
-                            <small class="tool-tip-cont">Disease Dictionary</small>
+                            <small class="tool-tip-cont">Muscle Builder</small>
                         </div>
                     </li>
                     <li data-tab-cont="food-recipe">
@@ -62,7 +62,7 @@
                             <small class="tool-tip-cont">Meditation</small>
                         </div>
                     </li>
-                    <li class="active"  data-tab-cont="heart-rate">
+                    <li data-tab-cont="heart-rate">
                         <span class="icon">
                             <ion-icon name="heart"></ion-icon>
                         </span>
@@ -72,20 +72,21 @@
                     </li>
                 </ul>
             </div>
+
             <!-- responsive navbar -->
             <div class="responsive-nav">
                 <!-- burger -->
                 <div class="burger">
-                    <ion-icon name="menu-outline" class="burger-menu-icon"></ion-icon>
+                    <ion-icon name="menu"></ion-icon>
                 </div>
                 <!-- nav items -->
                 <div class="main-nav-items">
-                    <ul class="list-items responsive-menu" data-responsive-menu>
+                    <ul class="list-items" data-responsive-menu>
                         <li>
                             <ion-icon name="calculator" class="" data-tab-cont="bmi"></ion-icon>
                         </li>
                         <li>
-                            <ion-icon name="medical"data-tab-cont="coro-tracker"></ion-icon>
+                            <ion-icon name="medical" class="active" data-tab-cont="coro-tracker"></ion-icon>
                         </li>
                         <li>
                             <ion-icon name="book"  data-tab-cont="disease-dict"></ion-icon>
@@ -93,14 +94,14 @@
                         <li>
                             <ion-icon name="pizza" data-tab-cont="food-recipe"></ion-icon>
                         </li>
-                        <li>
+                        <li  class="active">
                             <ion-icon name="newspaper"  data-tab-cont="health-news"></ion-icon>
                         </li>
-                        <li>
+                        <li class="">
                             <ion-icon name="musical-notes"  data-tab-cont="meditation"></ion-icon>
                         </li>
                         <li>
-                            <ion-icon name="heart" class="active"  data-tab-cont="heart-rate"></ion-icon>
+                            <ion-icon name="heart" data-tab-cont="heart-rate"></ion-icon>
                         </li>
                     </ul>
                 </div>

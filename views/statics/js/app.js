@@ -56,7 +56,7 @@ function tabFunc() {
         case "bmi":
           tabboxes[0].style.display = "block";
           corobox.style.display = "none";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "none";
           healthNews.style.display = "none";
           meditation.style.display = "none";
@@ -65,7 +65,7 @@ function tabFunc() {
         case "coro-tracker":
           tabboxes[0].style.display = "none";
           corobox.style.display = "block";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "none";
           healthNews.style.display = "none";
           meditation.style.display = "none";
@@ -84,7 +84,7 @@ function tabFunc() {
         case "food-recipe":
           tabboxes[0].style.display = "none";
           corobox.style.display = "none";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "block";
           healthNews.style.display = "none";
           meditation.style.display = "none";
@@ -93,7 +93,7 @@ function tabFunc() {
         case "health-news":
           tabboxes[0].style.display = "none";
           corobox.style.display = "none";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "none";
           healthNews.style.display = "block";
           meditation.style.display = "none";
@@ -102,7 +102,7 @@ function tabFunc() {
         case "meditation":
           tabboxes[0].style.display = "none";
           corobox.style.display = "none";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "none";
           healthNews.style.display = "none";
           meditation.style.display = "block";
@@ -111,7 +111,7 @@ function tabFunc() {
         case "heart-rate":
           tabboxes[0].style.display = "none";
           corobox.style.display = "none";
-          diseaseDict.style.display = "none";
+          musclebuilder.style.display = "none";
           foodRecipe.style.display = "none";
           healthNews.style.display = "none";
           meditation.style.display = "none";
