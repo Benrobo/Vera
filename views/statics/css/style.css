@@ -724,6 +724,7 @@ li{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 .section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card{
 	width:300px;
@@ -732,21 +733,24 @@ li{
 	border-radius: 5px;
 	position: relative;
 	overflow: hidden;
-	cursor: pointer;
+	margin:12px;
 }
 .section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .img-cont{
 	width: 100%;
 	height: 200px;
+	cursor: pointer;
 }
 .section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .body{
 	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
 }
 .section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-cont .recc-card .body span{
-	padding:10px 12px;
+	padding:6px 12px;
 	background: var(--dark-bg);
 	margin-top: 10px;
-	border-radius: 30px;
-	font-size: 13px;
+	border-radius: 10px;
+	font-size: 12px;
 }
 
 /* recc modal */
@@ -768,7 +772,7 @@ li{
 	height: 400px;
 }
 
-.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-modal .recc-modal-cont video{
+.section .main-cont .boxes-cont .muscle-builder .main-history .recommend-exercise .recc-modal .recc-modal-cont iframe{
 	background: var(--dark-bg);
 	width: 100%;
 	height:400px;

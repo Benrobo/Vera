@@ -4,11 +4,10 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
+const youtube = require("scrape-youtube").default;
 
 // scrapper
-const { getHealthNews, getFitnessNews } = require("../scrapper")
-
-
+const { getHealthNews, getFitnessNews } = require("../scrapper");
 
 // middlewares
 const { authPage } = require("../middleware/middleware");
@@ -19,8 +18,8 @@ function log(val) {
 }
 
 router.get("/", (req, res) => {
-    res.render("home");
-}); 
+  res.render("home");
+});
 
 router.get("/dashboard", authPage, (req, res) => {
   let userinfo = req.cookies;
@@ -49,43 +48,106 @@ router.get("/logout", authPage, (req, res) => {
   res.redirect("/");
 });
 
-
 // get Health news routes
 router.get("/api/health", async (req, res) => {
-
   getHealthNews("health")
-    .then((data)=>{
-        // console.log(data)
-        // return
-        return res.json({data, status: 200})
+    .then((data) => {
+      // console.log(data)
+      // return
+      return res.json({ data, status: 200 });
     })
-    .catch((err)=>{
-      console.log(err)
-      res.json({status: 500, msg: "Something went wrong"+err})
-    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ status: 500, msg: "Something went wrong" + err });
+    });
 });
 
 // get fitness articles
-// 'https://i.kinja-img.com/gawker-media/image/upload/aacdc97e447bb7a5df1dfada91a779dd.jpg
 router.get("/api/fitness", async (req, res) => {
-
   getFitnessNews("obese")
-  .then((data)=>{
+    .then((data) => {
       // console.log(data)
       // return
-      return res.json({data, status: 200})
+      return res.json({ data, status: 200 });
+    })
+    .catch((err) => {
+      res.json({ status: 500, msg: "Something went wrong " + err });
+    });
+});
+
+// get muscle fitness route
+router.post("/api/getMuscle", (req, res) => {
+  let terms = req.body.value;
+
+  let yplist1 = `https://www.youtube.com/c/PureGymVideo/search?query=${terms}`;
+
+  let yplist2 = `https://www.youtube.com/user/bodybuildingcomvideo/search?query=${terms}`;
+  
+
+  youtube.search(yplist2)
+  .then((data) => {
+    let youtubeCache = {};
+    let youtubeStore = [];
+    data.videos.forEach((video) => {
+      let { id, title, link, thumbnail, uploaded } = video;
+
+      const youtubeCont = {
+        id: id,
+        title: title,
+        link: link,
+        image: thumbnail,
+        video: `https://www.youtube.com/embed/${id}`,
+        uploaded: uploaded,
+      };
+
+      youtubeStore.push(youtubeCont);
+      youtubeCache[terms] = youtubeStore;
+  
+      return youtubeCache[terms]
+      
+    });
+    
+    res.send(youtubeCache[terms])
   })
   .catch((err)=>{
-    res.json({status: 500, msg: "Something went wrong "+err})
+    log(err)
+    res.send({msg: "Something went wrong "+err})
   })
-
 });
 
 
-// get muscle fitness route
-router.get("/api/getMuscle", (req, res)=>{
-  res.send("hey")
-})
+function getYoutubeVideo(terms){
+  let youtubePlaylist = `https://www.youtube.com/c/PureGymVideo/search?query=${terms}`;
+  
+  log(terms)
+
+  let youtubeCache = {};
+  let youtubeStore = [];
+
+
+  youtube.search(youtubePlaylist)
+  .then((data) => {
+    data.videos.forEach((video) => {
+      let { id, title, link, thumbnail, uploaded } = video;
+
+      const youtubeCont = {
+        id: id,
+        title: title,
+        link: link,
+        image: thumbnail,
+        video: `https://www.youtube.com/embed/${id}`,
+        uploaded: uploaded,
+      };
+
+      youtubeStore.push(youtubeCont);
+      youtubeCache[terms] = youtubeStore;
+  
+      return (youtubeCache)
+      
+    });
+    
+  })
+}
 
 module.exports = {
   router,

@@ -974,6 +974,7 @@ const MUSCLE_BUILDING = ()=>{
       workoutTimerCont = $(".workout-timer-cont"),
       workoutTimer = $("[data-workout-timer]"),
       timerStopBtn = $("[data-timer-stop-btn]"),
+      clearHistoryBtn = $("[data-clear-btn]"),
       selectValue,
       exerciseBody = $("[data-exercise-body]"),
       reccBody = $("[data-recc-body]"),
@@ -1101,14 +1102,14 @@ const MUSCLE_BUILDING = ()=>{
             localStorage.setItem("workout_data", JSON.stringify(localWorkoutValue))
           }
 
-
         }, 1000);
+        recommendationFunc()
       }
     }
 
     // populate worout history
     const populateWorkoutHistory = ()=>{
-      if(localStorage.getItem("workout_data") == null){
+      if(localStorage.getItem("workout_data") == null || localStorage.getItem("workout_data") == ""){
         exerciseBody.innerHTML = "You dont have any workout history here."
         return;
       }
@@ -1142,7 +1143,12 @@ const MUSCLE_BUILDING = ()=>{
   }
   workOutFunc()
 
-
+  // Clear all history
+  clearHistoryBtn.onclick  = ()=>{
+    if(localStorage.getItem("workout_data") !== null){
+      localStorage.removeItem("workout_data")
+    }
+  }
 
   // recommendation functionality
 
@@ -1154,23 +1160,55 @@ const MUSCLE_BUILDING = ()=>{
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({value: muscleSelect.value})
+      body: JSON.stringify({value: muscleSelect.value.toLowerCase()})
     })
 
     let response = await req.json();
 
-
     log(response)
+    if(response){
+      reccBody.innerHTML = "";
+      response.slice(0, 7).forEach((data)=>{
+        reccBody.innerHTML += `
+        <div class="recc-card" data-vid-url="${data.video}" data-recc-card data-recc-id="${data.id}">
+          <div class="img-cont" style="background: url('${data.image}'); background-size:cover; background-position:center;" data-recc-image></div>
+          <br>
+          <div class="body">
+              <span class="recc-title">
+                  ${data.title.slice(0, 40)}...
+              </span>
+          </div>
+        </div>
+        `;
+      })
+    }
 
-    return;
+    // return;
+    let reccImage = $all("[data-recc-image]");
+    let reccModal = $(".recc-modal");
+    let reccModalCont = $(".recc-modal-cont");
 
+    if(reccImage){
+      for (let i = 0; i < reccImage.length; i++) {
+        reccImage[i].onclick = (e)=>{
+          let vidUrl = e.target.parentElement.getAttribute("data-vid-url");
 
+          log(vidUrl)
 
+          reccModal.style.display = "flex";
 
-    let reccCard = $("[data-recc-card]");
-    if(reccCard){
-      reccCard.onclick = (e)=>{
-        let id;
+          reccModalCont.innerHTML = `
+            <iframe src='${vidUrl}' width="700" height="600"></iframe>
+          `
+        }
+      }
+
+      reccModal.onclick = (e)=>{
+        log(e.target)
+        if(e.target.classList.contains("recc-modal")){
+            reccModal.style.display = "none"
+            reccModalCont.innerHTML = ""
+          }
       }
     }
   }

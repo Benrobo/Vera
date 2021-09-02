@@ -1,22 +1,18 @@
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
-const request = require("request");
 
 let healthTerms = ["health", "vaccine", "medicare"]
 let fitnessTerms = ["fitness", "yoga", "heart-rate"]
 let randHealth = healthTerms[Math.floor(Math.random() * healthTerms.length)],
     randFitness =  fitnessTerms[Math.floor(Math.random() * fitnessTerms.length)];
 
-let api = "https://gizmodo.com/search?blogId=4&q="
-
-// log(randHealth)
+let api = "https://gizmodo.com/search?blogId=4&q=";
 
 
 const healthCache = {};
 const fitnessCache = {};
 
 const recipeResults = []
-
 
 function getHealthNews(randTerms){
     if(healthCache[randTerms]){
@@ -103,6 +99,11 @@ function getFitnessNews(randTerms){
             return fitnessCache[randTerms];
         })
 }
+
+
+
+
+
 
 
 function log(val){
