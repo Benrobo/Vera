@@ -1,10 +1,10 @@
 addEventListener("load", () => {
   tabFunc();
-  // TARGET_HEART_RATE()
-  // COVID_CHATBOT();
-  // HEALTH_NEWS();
+  TARGET_HEART_RATE()
+  COVID_CHATBOT();
+  HEALTH_NEWS();
   BMI_ALGORITHM();
-  // MEDITATION_FUNC();
+  MEDITATION_FUNC();
   MUSCLE_BUILDING();
 });
 
