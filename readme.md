@@ -69,7 +69,7 @@ To run this project locally, make sure you have <pre><code>nodejs</code></pre> i
 ####  4. 🎉 Run the server locally
 <pre><code>
     npm run dev
-</code>
+</code></pre>
 
 #### 5. 🎉 Your ready to go
 <pre><code>
