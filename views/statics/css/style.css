@@ -161,7 +161,7 @@ li{
 }
 
 .section .main-cont .welcome-container .user-card{
-	width: 150px;
+	width: auto;
 	padding:10px 20px;
 	background: var(--dark-md);
 	border-radius: 30px;
@@ -171,6 +171,7 @@ li{
 }
 .section .main-cont .welcome-container .user-card ion-icon{
 	font-size: 20px;
+	margin-right:2px;
 }
 
 .section .main-cont .welcome-container  .user-action .btn{
