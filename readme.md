@@ -19,7 +19,7 @@ Our health application tends to provide multipurpose tools which can be used in 
 
 - Coronavirus Tracker (Track recent coronavirus outbreak world wide using this tools) 
 
-- Disease Dictionary (Get to know the meaning of common disease names outthere)
+- Muscle Builder/Tracker (Get a better looking muscle)
 
 - Meditation (Feeling Tired, Anxious, Angry? with this tools every bad feeling are left behind)
 
