@@ -110,8 +110,7 @@ router.post("/api/getMuscle", (req, res) => {
     res.send(youtubeCache[terms])
   })
   .catch((err)=>{
-    log(err)
-    res.send({msg: "Something went wrong "+err})
+    res.send({youtubeScrapeError: "Something went wrong video cant be displayed", youtubeScrapeCode:404})
   })
 });
 

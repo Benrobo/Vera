@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @import url("./colors.css");
 
 html{
@@ -207,17 +208,122 @@ li{
 	height:100vh;
 }
 
+
+
+
+/* main-services area */
+.main-services{
+	width: 100%;
+	height: auto;
+	position: relative;
+	top:0px;
+	left:0px;
+	text-align: center;
+	color: #ccc;
+}
+
+.main-services .boxcont{
+	width: 80%;
+	height: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin: 10px auto;
+}
+
+.main-services .boxcont .box{
+	width: 85%;
+	margin-top: 100px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.main-services .boxcont .box .img-cont{
+	width: 350px;
+	height: 350px;
+	border-radius: 10px;
+}
+.main-services .boxcont .box .img-cont img{
+	box-shadow: 0px 0px 10px #000;
+	width: 100%;
+	border-radius: 10px;
+}
+.main-services .boxcont .box .main-txt{
+	width: 50%;
+	padding: 20px;
+	color: #ccc;
+	height: 350px;
+}
+
+.main-services .boxcont .box .main-txt h3{
+	font-size: 20px;
+}
+
+/* .main-services .boxcont .box .bmi-img{
+	background: url("../img/Services/bmi.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.main-services .boxcont .box .coro-img{
+	background: url("../img/Services/CHATBOT.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.main-services .boxcont .box .coro-img{
+	background: url("../img/Services/CHATBOT.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.main-services .boxcont .box .muscle-img{
+	background: url("../img/Services/muscle.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.main-services .boxcont .box .news-img{
+	background: url("../img/Services/health.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.main-services .boxcont .box .medi-img{
+	background: url("../img/Services/medi.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.main-services .boxcont .box .heart-img{
+	background: url("../img/Services/heartrate.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+} */
+
+
+
 .section .services{
     width:100%;
     padding:0px;
 }
 
 .section .services .head{
-    width:80%;
+    width:60%;
     height:auto;
     margin:12px auto;
     color:#ccc;
     text-align: center;
+	font-size: 14px;
 }
 
 .section .services .box-cont{
@@ -320,23 +426,28 @@ li{
 	.header .ovl .txt-cont p{
 		width: 300px;
 	}
-}
 
-@media (min-width:600px){
-	.header .ovl .txt-cont{
-		width: 300px;
-	}
-	.captcha-form{
-		width: 320px;
-	}
-	.captcha-form .attention-cont .btn{
+	.main-services .boxcont{
 		width: 100%;
+		margin-left: 0px auto;
 	}
-	.captcha-form .img-cont{
-		width:150px;
+	.main-services .boxcont .box{
+		width: 100%;
+		margin: 0px auto;
+		padding: 0px auto;
 	}
-	.header .ovl .txt-cont p{
-		width: 300px;
+	.main-services .boxcont .box .main-txt{
+		width:300px;
+		margin: 10px auto;
+		height: auto;
+		font-size: 14px;
+		text-align: start;
+
+	}
+	.main-services .boxcont .box .img-cont{
+		width: 270px;
+		margin: 10px auto;
+		text-align: center;
 	}
 }
 
@@ -356,6 +467,28 @@ li{
 	.header .ovl .txt-cont p{
 		width: 400px;
 	}
+	.main-services .boxcont{
+		width: 100%;
+		margin-left: 0px auto;
+	}
+	.main-services .boxcont .box{
+		width: 100%;
+		margin: 0px auto;
+		padding: 0px auto;
+	}
+	.main-services .boxcont .box .main-txt{
+		width:300px;
+		margin: 10px auto;
+		height: auto;
+		font-size: 14px;
+		text-align: start;
+
+	}
+	.main-services .boxcont .box .img-cont{
+		width: 270px;
+		margin: 10px auto;
+		text-align: center;
+	}
 }
 
 @media (min-width:1200px){
@@ -373,6 +506,25 @@ li{
 	}
 	.header .ovl .txt-cont p{
 		width: 400px;
+	}
+	.main-services .boxcont{
+		width: 80%;
+		margin: 10px auto;
+	}
+	.main-services .boxcont .box{
+		width: 100%;
+		margin: 0px auto;
+		padding: 20px auto;
+	}
+	.main-services .boxcont .box .main-txt{
+		width: 40%;
+		height: 350px;
+		font-size: 14px;
+		text-align: start;
+	}
+	.main-services .boxcont .box .img-cont{
+		width: 40%;
+		margin: 15px auto;
 	}
 }
 

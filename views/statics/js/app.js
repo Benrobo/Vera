@@ -1164,9 +1164,17 @@ const MUSCLE_BUILDING = ()=>{
     })
 
     let response = await req.json();
-
-    log(response)
-    if(response){
+    // show loading text
+    reccBody.innerHTML = `
+      <small>Loading.....</small>
+    `
+    if(response.youtubeScrapeError || response.youtubeScrapeCode == 404){
+      reccBody.innerHTML = `
+        <small>${response.youtubeScrapeError}.</small>
+      `
+      return;
+    }
+    else{
       reccBody.innerHTML = "";
       response.slice(0, 7).forEach((data)=>{
         reccBody.innerHTML += `
