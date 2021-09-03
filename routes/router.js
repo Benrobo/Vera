@@ -162,8 +162,13 @@ router.get("/api/getRecipe/all", async (req, res)=>{
   })
 })
 
-router.get("/api/getRecipe/search", (req, res)=>{
+router.post("/api/getRecipe/search", (req, res)=>{
+  let searchVal = req.body.searchValue;
 
+  searchRecipes(searchVal)
+  .then((data)=>{
+    res.json(data)
+  })
 })
 
 let foodNames = ["Bread", "Breakfast", "Dessert", "Drink", "Side dish", "Snack", "Pies", "Main", "Salad", "Starter", "Soup", "egusi","rice","milk","fish"];
@@ -172,6 +177,23 @@ function getAllRecipe(){
   let randFood = foodNames[Math.floor(Math.random() * foodNames.length)]
 
   let url = `https://api.edamam.com/search?q=${randFood},&from=0&to=100&app_id=${FOOD_APP_ID}&app_key=${FOOD_API_KEY}`
+
+  return fetch(url)
+    .then((res)=>{
+      return res.json()
+    })
+    .then((data)=>{
+      if(!data){
+        return {msg: "Something went wrong.", status: 400}
+      }
+      return (data.hits)
+    })
+}
+
+
+function searchRecipes(searchVal){
+
+  let url = `https://api.edamam.com/search?q=${searchVal},&from=0&to=100&app_id=${FOOD_APP_ID}&app_key=${FOOD_API_KEY}`
 
   return fetch(url)
     .then((res)=>{

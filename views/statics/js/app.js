@@ -1234,14 +1234,81 @@ const FOOD_RECIPE = ()=>{
   let recipeModal = $("recipe-food-modal");
   let mainModalCont = $("[data-recipe-main-modal]")
 
+  searchBtn.onclick  = ()=>{
+    if(searchInp.value == ""){
+      alert("Inpus cant be empty");
+      return;
+    }
+
+    searchFood(searchInp.value)
+  }
 
   getAllRecipe()
 
   async function getAllRecipe(){
+    searchResultCont.innerHTML = `
+        <span class="spinner spinner-border"></span>
+      `;
+
     let req = await fetch("/api/getRecipe/all");
     let res = await req.json();
     log(res)
 
+    
+    
+    if(res.msg || res.status){
+      searchResultCont.innerHTML = `
+        <p>${res.msg}</p>
+      `;
+    }
+    else if(res == ""){
+      searchResultCont.innerHTML = `
+        <p>Sorry Recipe with that food name doesnt exist</p>
+      `;
+      return;
+    }
+    else{
+      searchResultCont.innerHTML = "";
+      for (let i = 0; i < res.length; i++) {
+
+        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily} = res[i].recipe;
+
+        searchResultCont.innerHTML += `
+        <div class="food-card" data-recipe-uri="${uri}" data-recipe-source="${source}" data-recipe-healthLabels="[${healthLabels}]" data-recipe-ing="[${ingredientLines}]" data-recipe-calories="${calories}" data-recipe-nutrients="${totalNutrients}">
+          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}">
+          </div>
+          <br>
+          <div class="body">
+              <p>${label}</p>
+              <ion-icon class="save-btn" name="bookmarks-outline"></ion-icon>
+          </div>
+        </div>
+        
+        `
+
+      }
+
+    }
+  }
+
+  async function searchFood(search){
+    searchResultCont.innerHTML = `
+      <span class="spinner spinner-border"></span>
+    `;
+
+    let req = await fetch("/api/getRecipe/search", {
+      method: "post",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({searchValue: search})
+    });
+
+    let res = await req.json();
+    log(res)
+
+    
+    
     if(res.msg || res.status){
       searchResultCont.innerHTML = `
         <p>${res.msg}</p>
