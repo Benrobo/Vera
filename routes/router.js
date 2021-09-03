@@ -6,6 +6,10 @@ const path = require("path");
 const fetch = require("node-fetch");
 const youtube = require("scrape-youtube").default;
 
+// ENV
+const FOOD_APP_ID = process.env.FOOD_APP_ID;
+let FOOD_API_KEY = process.env.FOOD_API_KEY;
+
 // scrapper
 const { getHealthNews, getFitnessNews } = require("../scrapper");
 
@@ -146,6 +150,39 @@ function getYoutubeVideo(terms){
     });
     
   })
+}
+
+
+// get recipe food 
+
+router.get("/api/getRecipe/all", async (req, res)=>{
+  getAllRecipe()
+  .then((data)=>{
+    res.json(data)
+  })
+})
+
+router.get("/api/getRecipe/search", (req, res)=>{
+
+})
+
+let foodNames = ["Bread", "Breakfast", "Dessert", "Drink", "Side dish", "Snack", "Pies", "Main", "Salad", "Starter", "Soup", "egusi","rice","milk","fish"];
+
+function getAllRecipe(){
+  let randFood = foodNames[Math.floor(Math.random() * foodNames.length)]
+
+  let url = `https://api.edamam.com/search?q=${randFood},&from=0&to=100&app_id=${FOOD_APP_ID}&app_key=${FOOD_API_KEY}`
+
+  return fetch(url)
+    .then((res)=>{
+      return res.json()
+    })
+    .then((data)=>{
+      if(!data){
+        return {msg: "Something went wrong.", status: 400}
+      }
+      return (data.hits)
+    })
 }
 
 module.exports = {

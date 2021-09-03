@@ -1,10 +1,11 @@
 addEventListener("load", () => {
   tabFunc();
-  TARGET_HEART_RATE()
-  COVID_CHATBOT();
-  HEALTH_NEWS();
-  BMI_ALGORITHM();
-  MEDITATION_FUNC();
+  FOOD_RECIPE()
+  // TARGET_HEART_RATE()
+  // COVID_CHATBOT();
+  // HEALTH_NEWS();
+  // BMI_ALGORITHM();
+  // MEDITATION_FUNC();
   MUSCLE_BUILDING();
 });
 
@@ -41,7 +42,7 @@ function tabFunc() {
   let burgerMenu = $(".burger");
   let responsiveMenu = $("[data-responsive-menu]");
 
-  tabboxes[2].style.display = "block";
+  tabboxes[3].style.display = "block";
 
   tabs.forEach((tab) => {
     tab.onclick = (e) => {
@@ -1222,3 +1223,58 @@ const MUSCLE_BUILDING = ()=>{
   }
   recommendationFunc()
 } 
+
+
+// Recipe App
+const FOOD_RECIPE = ()=>{
+  // global variables
+  let searchInp = $("[data-recipe-searchinp]");
+  let searchBtn = $("[data-search-btn]");
+  let searchResultCont = $("[data-recipe-result]");
+  let recipeModal = $("recipe-food-modal");
+  let mainModalCont = $("[data-recipe-main-modal]")
+
+
+  getAllRecipe()
+
+  async function getAllRecipe(){
+    let req = await fetch("/api/getRecipe/all");
+    let res = await req.json();
+    log(res)
+
+    if(res.msg || res.status){
+      searchResultCont.innerHTML = `
+        <p>${res.msg}</p>
+      `;
+    }
+    else if(res == ""){
+      searchResultCont.innerHTML = `
+        <p>Sorry Recipe with that food name doesnt exist</p>
+      `;
+      return;
+    }
+    else{
+      searchResultCont.innerHTML = "";
+      for (let i = 0; i < res.length; i++) {
+
+        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily} = res[i].recipe;
+
+        searchResultCont.innerHTML += `
+        <div class="food-card">
+          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}">
+          </div>
+          <br>
+          <div class="body">
+              <p>${label}</p>
+              <ion-icon class="save-btn" name="bookmarks-outline"></ion-icon>
+          </div>
+        </div>
+        
+        `
+
+      }
+
+    }
+  }
+
+}
