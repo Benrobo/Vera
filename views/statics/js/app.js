@@ -505,42 +505,6 @@ const MEDITATION_FUNC = () => {
   stopMeditation();
 };
 
-// Disease Dictionary
-
-const DISEASE_DICT = () => {
-  // global variables
-  let searchbox = $(".dict-input");
-  let resultcont = $(".dict-result-cont");
-
-  function handleDict() {
-    searchbox.onkeydown = async (e) => {
-      const API = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchbox.value}`;
-
-      if (e.key == "Enter") {
-        if (searchbox.value == "") {
-          alert("input field cant be empty");
-          return;
-        }
-
-        let req = await fetch(API);
-        let res = await req.json();
-
-        res.forEach((data) => {
-          let men = data.meanings.map((el) => {
-            return el.definitions;
-          });
-
-          men.map((elm2) => {
-            log(elm2);
-          });
-        });
-      }
-    };
-  }
-
-  handleDict();
-};
-
 // Health news
 const HEALTH_NEWS = () => {
   // globalvariables
