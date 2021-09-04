@@ -42,7 +42,7 @@ function tabFunc() {
   let burgerMenu = $(".burger");
   let responsiveMenu = $("[data-responsive-menu]");
 
-  tabboxes[3].style.display = "block";
+  tabboxes[0].style.display = "block";
 
   tabs.forEach((tab) => {
     tab.onclick = (e) => {
