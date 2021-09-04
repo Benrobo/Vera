@@ -1,11 +1,11 @@
 addEventListener("load", () => {
   tabFunc();
   FOOD_RECIPE()
-  // TARGET_HEART_RATE()
-  // COVID_CHATBOT();
-  // HEALTH_NEWS();
-  // BMI_ALGORITHM();
-  // MEDITATION_FUNC();
+  TARGET_HEART_RATE()
+  COVID_CHATBOT();
+  HEALTH_NEWS();
+  BMI_ALGORITHM();
+  MEDITATION_FUNC();
   MUSCLE_BUILDING();
 });
 
@@ -361,67 +361,6 @@ const BMI_ALGORITHM = function () {
           </div>
         `;
       }
-    }
-
-    // Check if the result main screen isnt empty, if it is hide the recipes card from showing.
-    if (resultcont.innerHTML != false) {
-      // clear foodcont before displaying recipes
-      foodCont.innerHTML = "";
-      generateNutrientRecipes();
-    }
-  }
-
-  async function generateNutrientRecipes() {
-    const API_KEY = "df3f7941a7114ae29e933628e7041f46";
-    const API = `https://api.spoonacular.com/recipes/findByNutrients?minCarbs=10&maxCarbs=100&number=6&apiKey=${API_KEY}&includeNutrition=false`;
-
-    try {
-      let request = await fetch(API);
-      let result = await request.json();
-      if (result && result.length !== 0) {
-        result.forEach((data) => {
-          foodCont.innerHTML += `
-          <div class="food-card">
-              <div class="img-cont" style="background:url('${data.image}'); background-size:cover;; background-position: center;"></div>
-              <br>
-              <p class="title">${data.title}</p>
-              <div class="cont">
-                  <span class="tag">
-                      <small>calories ${data.calories}</small>
-                  </span>
-                  <span class="tag">
-                      <small>protein ${data.protein}</small>
-                  </span>
-                  <span class="tag">
-                      <small>fat ${data.fat}</small>
-                  </span>
-                  <span class="tag">
-                      <small>carbs ${data.carbs}</small>
-                  </span>
-              </div>
-          </div>
-          `;
-        });
-        return;
-      } else if (result == "" || result.length == 0) {
-        foodCont.innerHTML = `
-          <small class="spinner-border" style="text-align:center; padding:10px 12px; background:var(--dark-md);"><small>
-        `;
-        setTimeout(() => {
-          foodCont.innerHTML = `
-            <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry nothing to show here<small>
-          `;
-        }, 2000);
-      }
-    } catch (error) {
-      foodCont.innerHTML = `
-          <small class="spinner-border" style="text-align:center; padding:10px 12px; background:var(--dark-md);"><small>
-        `;
-      setTimeout(() => {
-        foodCont.innerHTML = `
-            <small style="text-align:center; padding:10px 12px; background:var(--dark-md);">Sorry something went wrong, recipes could not be displayed.<small>
-          `;
-      }, 2000);
     }
   }
 };
@@ -1192,11 +1131,23 @@ const MUSCLE_BUILDING = ()=>{
 // Recipe App
 const FOOD_RECIPE = ()=>{
   // global variables
-  let searchInp = $("[data-recipe-searchinp]");
-  let searchBtn = $("[data-search-btn]");
-  let searchResultCont = $("[data-recipe-result]");
-  let recipeModal = $("recipe-food-modal");
-  let mainModalCont = $("[data-recipe-main-modal]")
+  let searchInp = $("[data-recipe-searchinp]"),
+      searchBtn = $("[data-search-btn]"),
+      searchResultCont = $("[data-recipe-result]"),
+      recipeModal = $(".recipe-food-modal"),
+      mainModalCont = $("[data-recipe-main-modal]"),
+      recipeModalImg = $(".recipe-modal-img"),
+      recipeCloseBtn = $(".recipe-close-modal-btn"),
+      recipeMOdalTitle = $(".recipe-modal-title"),
+      recipeMOdalAuthor = $(".recipe-modal-author"),
+      recipeModalIng = $(".recipe-modal-ingredients-list"),
+      recipePreText = $(".recipe-modal-preparation-text"),
+      recipePreLink = $(".recipe-preparation-link"),
+      recipeNutTable = $(".recipe-nutrition-table"),
+      recipeModalFact = $(".recipe-modal-fact")
+      recipeDietText = $(".recipe-diets-text");
+
+
 
   searchBtn.onclick  = ()=>{
     if(searchInp.value == ""){
@@ -1208,7 +1159,7 @@ const FOOD_RECIPE = ()=>{
   }
 
   getAllRecipe()
-
+  
   async function getAllRecipe(){
     searchResultCont.innerHTML = `
         <span class="spinner spinner-border"></span>
@@ -1216,11 +1167,8 @@ const FOOD_RECIPE = ()=>{
 
     let req = await fetch("/api/getRecipe/all");
     let res = await req.json();
-    log(res)
-
-    
-    
-    if(res.msg || res.status){
+    // log(res)
+    if(res.msg || res.status == 400 || res.status == 500){
       searchResultCont.innerHTML = `
         <p>${res.msg}</p>
       `;
@@ -1235,24 +1183,30 @@ const FOOD_RECIPE = ()=>{
       searchResultCont.innerHTML = "";
       for (let i = 0; i < res.length; i++) {
 
-        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily} = res[i].recipe;
+        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily, mealType} = res[i].recipe;
 
         searchResultCont.innerHTML += `
-        <div class="food-card" data-recipe-uri="${uri}" data-recipe-source="${source}" data-recipe-healthLabels="[${healthLabels}]" data-recipe-ing="[${ingredientLines}]" data-recipe-calories="${calories}" data-recipe-nutrients="${totalNutrients}">
-          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}">
+        <div class="food-card" 
+        data-title="${label}"
+        data-recipe-uri="${url}" data-recipe-source="${source}" data-recipe-healthLabels="${healthLabels}" data-recipe-ing="${ingredientLines}" data-recipe-calories="${calories}"
+        data-recipe-img="${image}"
+        data-recipe-labels="${dietLabels}"
+        data-meal-type="${mealType}">
+          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}" data-recipe-image>
           </div>
           <br>
           <div class="body">
               <p>${label}</p>
-              <ion-icon class="save-btn" name="bookmarks-outline"></ion-icon>
           </div>
         </div>
         
         `
 
       }
-
+      openModal()
     }
+
+    
   }
 
   async function searchFood(search){
@@ -1288,24 +1242,84 @@ const FOOD_RECIPE = ()=>{
       searchResultCont.innerHTML = "";
       for (let i = 0; i < res.length; i++) {
 
-        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily} = res[i].recipe;
+        const {uri, label, image, source, url, dietLabels, healthLabels, ingredientLines,calories,totalNutrients,totalDaily, mealType} = res[i].recipe;
 
         searchResultCont.innerHTML += `
-        <div class="food-card">
-          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}">
+        <div class="food-card" 
+        data-title="${label}"
+        data-recipe-uri="${url}" data-recipe-source="${source}" data-recipe-healthLabels="${healthLabels}" data-recipe-ing="${ingredientLines}" data-recipe-calories="${calories}"
+        data-recipe-img="${image}"
+        data-recipe-labels="${dietLabels}"
+        data-meal-type="${mealType}">
+          <div class="img" style="background:url('${image}'); background-size: cover; background-position: center;" data-food-id="${i}" data-recipe-image>
           </div>
           <br>
           <div class="body">
               <p>${label}</p>
-              <ion-icon class="save-btn" name="bookmarks-outline"></ion-icon>
           </div>
         </div>
-        
         `
 
       }
-
+      openModal()
     }
   }
 
+  function openModal() {
+    let recipeImg = document.querySelectorAll("[data-recipe-image]");
+    recipeImg.forEach((img)=>{
+      img.onclick = (e)=>{
+
+        recipeModal.style.display = "flex"
+
+        let {title,recipeCalories,recipeHealthlabels, recipeIng, recipeNutrients,recipeSource,recipeUri,recipeLabels,recipeImg, mealType} = e.target.parentElement.dataset;
+
+        log(recipeModalImg)
+
+        recipeModalImg.src = recipeImg;
+        recipeMOdalTitle.textContent = title;
+        recipeMOdalAuthor.textContent = recipeSource;
+
+        recipeModalIng.innerHTML = "";
+        recipeIng.split(",").forEach((ing)=>{
+          let li = document.createElement("li");
+          li.innerHTML = ing;
+
+          recipeModalIng.appendChild(li);
+        })
+
+        recipePreText.textContent  = `
+        This recipe is provided by ${recipeSource}. You can view the detailed preparation instructions by clicking the following link.
+        `
+        recipePreLink.setAttribute("href", recipeUri)
+        
+        recipeModalFact.innerHTML  =`
+          <span> ${Math.floor(recipeCalories)} calories | ${mealType}</span>
+        `
+
+        // recipeDietText.textContent = recipeHealthlabels.replace(",", " ,");
+
+
+        recipeDietText.innerHTML = "";
+        recipeHealthlabels.split(",").forEach((diets)=>{
+          let span = document.createElement("span");
+          span.setAttribute("class", "recipe-diet");
+          
+          span.textContent = diets;
+          recipeDietText.append(span)
+        })
+
+        log(recipeNutrients)
+      }
+    })
+    closeModal()
+
+  }
+  
+  function closeModal(){
+    recipeCloseBtn.onclick = ()=>{
+      recipeModal.style.display = "none"
+    }
+  }
+  
 }

@@ -3,5 +3,6 @@ assets
 scrapper2.js
 getHealthnews.js
 tempStore.json
+./.env
 ./views/home.html
 ./views/dashboard.html

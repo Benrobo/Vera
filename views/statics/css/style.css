@@ -1389,17 +1389,6 @@ li{
 	transform: scale(1);
 }
 
-.section .main-cont .boxes-cont .food-recipe .head .save-recipe{
-	position: absolute;
-	right: 10px;
-	top:12px;
-	padding: 8px;
-	font-size: 12px;
-	border-radius:5px;
-	border:2px solid var(--yellow-light);
-	color: #ccc;
-}
-
 .section .main-cont .boxes-cont .food-recipe .section-cont .main{
 	width: 100%;
 	height: auto;
@@ -1481,7 +1470,7 @@ li{
 	height: auto;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-wrap: wrap;
 	padding: 20px;
 }
@@ -1500,6 +1489,10 @@ li{
 
 .section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-head .main-txt{
 	height: 200px;
+}
+.section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-head .main-txt .title{
+	width: 350px;
+
 }
 
 .section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-head .main-txt .back{
@@ -1542,6 +1535,20 @@ li{
 .section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-main-cont .preparation .btn{
 	background: var(--yellow-light);
 	font-weight: 600;
+}
+
+.section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-main-cont .preparation .recipe-diets-text{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-main-cont .preparation .recipe-diet{
+	padding: 8px 15px;
+	font-size: 13px;
+	background: var(--dark-md);
+	border-radius: 30px;
+	margin: 10px;
 }
 
 .section .main-cont .boxes-cont .food-recipe .section-cont .recipe-food-modal .main-modal .recipe-main-cont .nutrition table{

@@ -1,8 +1,6 @@
 const express = require("express");
 const { v4: uuid } = require("uuid");
 const router = express.Router();
-const fs = require("fs");
-const path = require("path");
 const fetch = require("node-fetch");
 const youtube = require("scrape-youtube").default;
 
@@ -119,40 +117,6 @@ router.post("/api/getMuscle", (req, res) => {
 });
 
 
-function getYoutubeVideo(terms){
-  let youtubePlaylist = `https://www.youtube.com/c/PureGymVideo/search?query=${terms}`;
-  
-  log(terms)
-
-  let youtubeCache = {};
-  let youtubeStore = [];
-
-
-  youtube.search(youtubePlaylist)
-  .then((data) => {
-    data.videos.forEach((video) => {
-      let { id, title, link, thumbnail, uploaded } = video;
-
-      const youtubeCont = {
-        id: id,
-        title: title,
-        link: link,
-        image: thumbnail,
-        video: `https://www.youtube.com/embed/${id}`,
-        uploaded: uploaded,
-      };
-
-      youtubeStore.push(youtubeCont);
-      youtubeCache[terms] = youtubeStore;
-  
-      return (youtubeCache)
-      
-    });
-    
-  })
-}
-
-
 // get recipe food 
 
 router.get("/api/getRecipe/all", async (req, res)=>{
@@ -188,6 +152,9 @@ function getAllRecipe(){
       }
       return (data.hits)
     })
+    .catch((err)=>{
+      return {msg: "Something went wrong, make sure your'e connected to internet.", status: 500}
+    })
 }
 
 
@@ -204,6 +171,9 @@ function searchRecipes(searchVal){
         return {msg: "Something went wrong.", status: 400}
       }
       return (data.hits)
+    })
+    .catch((err)=>{
+      return {msg: "Something went wrong, make sure your connected to internet.", status: 500}
     })
 }
 

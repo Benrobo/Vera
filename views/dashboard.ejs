@@ -1,553 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>HEALTH TOOLS</title>
-    <link rel="stylesheet" href="./statics/css/bootstrap.css">
-    <link rel="stylesheet" href="./statics/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./statics/css/bootstrap.css" />
+    <link rel="stylesheet" href="./statics/css/style.css" />
+  </head>
+  <body>
     <!-- navbar -->
     <div class="main-body-container">
-        <nav class="sidenavbar">
-            <div class="sidebar">
-                <ul class="list-items">
-                    <li class="active"  data-tab-cont="bmi">
-                        <span class="icon">
-                            <ion-icon name="calculator"></ion-icon>
-                        </span>
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">BMI Calculator</small>
-                        </div>
-                    </li>
-                    <li class="" data-tab-cont="coro-tracker">
-                        <span class="icon">
-                            <ion-icon name="medical"></ion-icon>
-                        </span> 
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Coronavirus Tracker</small>
-                        </div>
-                    </li>
-                    <li data-tab-cont="muscle-builder">
-                        <span class="icon">
-                            <ion-icon name="barbell-outline"></ion-icon>
-                        </span> 
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Muscle Builder</small>
-                        </div>
-                    </li>
-                    <li data-tab-cont="food-recipe">
-                        <span class="icon">
-                            <ion-icon name="pizza"></ion-icon>
-                        </span>
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Food Recipes</small>
-                        </div>
-                    </li>
-                    <li data-tab-cont="health-news">
-                        <span class="icon">
-                            <ion-icon name="newspaper"></ion-icon>
-                        </span>
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Health News</small>
-                        </div>
-                    </li>
-                    <li class="" data-tab-cont="meditation">
-                        <span class="icon">
-                            <ion-icon name="musical-notes"></ion-icon>
-                        </span>
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Meditation</small>
-                        </div>
-                    </li>
-                    <li data-tab-cont="heart-rate">
-                        <span class="icon">
-                            <ion-icon name="heart"></ion-icon>
-                        </span>
-                        <div class="tool-tip">
-                            <small class="tool-tip-cont">Heart Rate Test</small>
-                        </div>
-                    </li>
-                </ul>
+      <nav class="sidenavbar">
+        <div class="sidebar">
+          <ul class="list-items">
+            <li class="active" data-tab-cont="bmi">
+              <span class="icon">
+                <ion-icon name="calculator"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">BMI Calculator</small>
+              </div>
+            </li>
+            <li class="" data-tab-cont="coro-tracker">
+              <span class="icon">
+                <ion-icon name="medical"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Coronavirus Tracker</small>
+              </div>
+            </li>
+            <li data-tab-cont="muscle-builder">
+              <span class="icon">
+                <ion-icon name="barbell-outline"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Muscle Builder</small>
+              </div>
+            </li>
+            <li data-tab-cont="food-recipe">
+              <span class="icon">
+                <ion-icon name="pizza"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Food Recipes</small>
+              </div>
+            </li>
+            <li data-tab-cont="health-news">
+              <span class="icon">
+                <ion-icon name="newspaper"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Health News</small>
+              </div>
+            </li>
+            <li class="" data-tab-cont="meditation">
+              <span class="icon">
+                <ion-icon name="musical-notes"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Meditation</small>
+              </div>
+            </li>
+            <li data-tab-cont="heart-rate">
+              <span class="icon">
+                <ion-icon name="heart"></ion-icon>
+              </span>
+              <div class="tool-tip">
+                <small class="tool-tip-cont">Heart Rate Test</small>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- responsive navbar -->
+        <div class="responsive-nav">
+          <!-- burger -->
+          <div class="burger">
+            <ion-icon name="menu"></ion-icon>
+          </div>
+          <!-- nav items -->
+          <div class="main-nav-items">
+            <ul class="list-items" data-responsive-menu>
+              <li class="active" data-tab-cont="bmi">
+                <ion-icon name="calculator"></ion-icon>
+              </li>
+              <li class="" data-tab-cont="coro-tracker">
+                <ion-icon name="medical"></ion-icon>
+              </li>
+              <li data-tab-cont="muscle-builder">
+                <ion-icon name="barbell-outline"></ion-icon>
+              </li>
+              <li data-tab-cont="food-recipe">
+                <ion-icon name="pizza"></ion-icon>
+              </li>
+              <li data-tab-cont="health-news">
+                <ion-icon name="newspaper"></ion-icon>
+              </li>
+              <li class="" data-tab-cont="meditation">
+                <ion-icon name="musical-notes"></ion-icon>
+              </li>
+              <li data-tab-cont="heart-rate">
+                <ion-icon name="heart"></ion-icon>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <section class="section">
+        <div class="main-cont">
+          <div class="welcome-container">
+            <div class="user-card">
+              <ion-icon name="person-circle"></ion-icon>
+              <span class="name ml-1">
+                <% if(userinfo){%> <%= userinfo.username %> <% } %>
+              </span>
             </div>
-
-            <!-- responsive navbar -->
-            <div class="responsive-nav">
-                <!-- burger -->
-                <div class="burger">
-                    <ion-icon name="menu"></ion-icon>
-                </div>
-                <!-- nav items -->
-                <div class="main-nav-items">
-                    <ul class="list-items" data-responsive-menu>
-                        <li class="active"  data-tab-cont="bmi">
-                            <ion-icon name="calculator"></ion-icon>
-                        </li>
-                        <li class="" data-tab-cont="coro-tracker">
-                            <ion-icon name="medical"></ion-icon>
-                        </li>
-                        <li data-tab-cont="muscle-builder">
-                            <ion-icon name="barbell-outline"></ion-icon>
-                        </li>
-                        <li data-tab-cont="food-recipe">
-                            <ion-icon name="pizza"></ion-icon>
-                        </li>
-                        <li data-tab-cont="health-news">
-                            <ion-icon name="newspaper"></ion-icon>
-                        </li>
-                        <li class="" data-tab-cont="meditation">
-                            <ion-icon name="musical-notes"></ion-icon>
-                        </li>
-                        <li data-tab-cont="heart-rate">
-                            <ion-icon name="heart"></ion-icon>
-                        </li>
-                    </ul>
-                </div>
+            <div class="user-action">
+              <a href="/logout" class="btn logout-btn"> Logout </a>
             </div>
-        </nav>
-    
-        <section class="section">
-            <div class="main-cont">
-                <div class="welcome-container">
-                    <div class="user-card">
-                        <ion-icon name="person-circle"></ion-icon>
-                        <span class="name ml-1">
-                            <% if(userinfo){%> 
-                                <%= userinfo.username %> 
-                            <% } %> 
-                        </span>
-                    </div>
-                    <div class="user-action">
-                        <a href="/logout" class="btn logout-btn">
-                            Logout
-                        </a>
-                    </div>
+          </div>
+          <hr />
+          <div class="boxes-cont">
+            <!-- bmi calculator -->
+            <div class="box bmi-calc" data-tab-box="bmi">
+              <div class="head">
+                <h1>BMI Calculator</h1>
+                <p>Gender</p>
+                <div class="select">
+                  <button data-gender="male" class="male" value="male">
+                    <ion-icon name="man" class="male" value="male"></ion-icon>
+                  </button>
+                  <button
+                    name="woman"
+                    class="female"
+                    data-gender="female"
+                    value="female"
+                  >
+                    <ion-icon
+                      name="woman"
+                      class="female"
+                      value="female"
+                    ></ion-icon>
+                  </button>
                 </div>
-                <hr>
-                <div class="boxes-cont">
-                    <!-- bmi calculator -->
-                    <div class="box bmi-calc" data-tab-box="bmi">
-                        <div class="head">
-                            <h1>BMI Calculator</h1>
-                            <p>Gender</p>
-                            <div class="select">
-                                <button  data-gender="male" class="male" value="male">
-                                    <ion-icon 
-                                    name="man"
-                                    class="male" value="male"></ion-icon>
-                                </button>
-                                <button name="woman" class="female" data-gender="female" value="female">
-                                    <ion-icon 
-                                    name="woman"
-                                    class="female" value="female"></ion-icon>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="measurement-screen">
-                            <div class="head">
-                                <h2>HEIGHT (FT)</h2>
-                                <h2>WEIGHT (lb)</h2>
-                            </div>
-                            <div class="inputs">
-                                <input type="number" data-bmi-height="height" class="bmi-inputs" name="height" placeholder="60">
-                                <input type="number" data-bmi-weight="weight" class="bmi-inputs" name="weight" placeholder="45">
-                            </div>
-                            <div class="action">
-                                <button class="btn submit-btn" data-calc-button>
-                                    Calculate BMI
-                                </button>
-                            </div>
-                        </div>
-                        <div class="result-main-screen">
-                            <div class="result-screen" data-bmi-result>
-                            </div>
-                            <div class="recommendations">
-                                <p>Here are other nutrition food recommenation which can help you stabilize your fitness.</p>
-                                <br>
-                                <div class="food-boxes-cont" data-food-container>
-                                </div>
-                                <br>
-                                <br>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                    </div>
-                    <!-- coro tracker -->
-                    <div class="box coro-tracker" data-tab-box="coro-tracker">
-                        <div class="coro-container">
-                            <div class="head">
-                                <p>Persolan Covid-19 Chatbot</p>
-                                <small>Select one of the following.</small>
-                                <div class="action-select">
-                                    <button class="btns chatbot-btn" data-chat-tab>
-                                        Chat Bot
-                                    </button>
-                                    <button class="btns voice-recognition-btn" data-chat-tab>
-                                        Voice Recognition
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="chat-container">
-                                <div class="chat-head">
-                                    <div class="img-cont">
-                                        <img src="./statics/img/section/bot.png" alt="" class="img-fluid">
-                                    </div>
-                                    <span class="botname">Personal Bot</span>
-                                </div>
-                                <div class="chat-body">
-                                    <div class="bot-loading">
-                                        <span class="spinner-grow spinner-grow-sm p-0"></span>
-                                        <span class="spinner-grow spinner-grow-sm p-0"></span>
-                                        <span class="spinner-grow spinner-grow-sm p-0"></span>
-                                    </div>
-                                </div>
-                                <div class="chat-action">
-                                    <input type="text" class="chat-msg-input" placeholder="Countries name here">
-                                    <button class="submit-btn btn chat-submit">
-                                        Send <ion-icon name="arrow-forward-outline"></ion-icon>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- voice recognition -->
-                            <div class="voice-reg-cont">
-                                <p>Pronounce a Country Name: eg <small>United State</small></p>
-                                <div class="main">
-                                    <button class="mic voice-start">
-                                        <ion-icon name="mic-outline"></ion-icon>
-                                    </button>
-                                    <button class="mic voice-stop">
-                                        <ion-icon name="mic-off-outline"></ion-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Muscle Builder -->
-                    <div class="box muscle-builder" data-tab-box="muscle-builder">
-                        <div class="muscle-builder">
-                            <div class="head">
-                                <h1>Muscle Builder</h1>
-                                <small>Build and Heal your Muscle.</small>
-                            </div>
-                            <div class="cards-cont">
-                                <div class="cards curr-weight">
-                                    <div class="img-cont">
-                                        <ion-icon name="person-add-outline"></ion-icon>
-                                    </div> 
-                                    <div class="cont">
-                                        <small>Current Weight</small>
-                                        <h4 data-curr-weight>34kg</h4>
-                                    </div>
-                                </div>
-                                <div class="cards curr-height">
-                                    <div class="img-cont">
-                                        <ion-icon name="person-add-outline"></ion-icon>
-                                    </div> 
-                                    <div class="cont">
-                                        <small>Current Height</small>
-                                        <h4 data-curr-height>34ft</h4>
-                                    </div>
-                                </div>
-                                <div class="cards curr-age">
-                                    <div class="img-cont">
-                                        <ion-icon name="person-add-outline"></ion-icon>
-                                    </div> 
-                                    <div class="cont">
-                                        <small>Workout Target</small>
-                                        <h4 data-workout-target>200</h4>
-                                    </div>
-                                </div>
-                                <div class="cards workout">
-                                   <div class="img-cont">
-                                    <ion-icon name="barbell-outline"></ion-icon>
-                                   </div> 
-                                   <div class="cont">
-                                       <small>Workout Completed</small>
-                                       <h4 data-curr-workout-completed>240</h4>
-                                   </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="workout-container">
-                                <div class="muscle-cont img-cont">
-                                    <img src="./statics/img/Muscles/chest.png" alt="" class="img-fluid" data-muscle-img>
-                                </div>
-                                <div class="result-cont">
-                                    <!-- select muscles -->
-                                    <div class="muscle-select-cont">
-                                        <p>Select Muscle Building</p>
-                                        <select data-muscle-select></select>
-                                        <br>
-                                        <div class="muscle-preview-cont" data-select-preview></div>
-                                        <br>
-                                        <div class="action">
-                                            <button class="btn start-workout" data-start-workout>
-                                                Start Workout
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- workout timer -->
-                                <div class="workout-timer-cont">
-                                    <div class="timer-cont">
-                                        <h1 class="timer-txt" data-workout-timer>
-                                            120
-                                        </h1>
-                                        <br>
-                                        <br>
-                                        <button class="btn btn-danger" data-timer-stop-btn>
-                                            Stop and Save
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <!-- main-workout-history -->
-                            <div class="main-history">
-                                <!-- last exercise -->
-                                <div class="last-exercise">
-                                    <div class="head">
-                                        <p>Last Exercise</p>
-                                        <button class="btn btn-danger" data-clear-btn>
-                                            <small>clear all</small>
-                                        </button>
-                                    </div>
-                                    <hr>
-                                    <br>
-                                    <div class="exercise-body" data-exercise-body>
-                                        <div class="exercise-card"></div>
-                                    </div>
-                                </div>
-                                <br>
-                                <!-- recommended exercise -->
-                                <div class="recommend-exercise">
-                                    <p>Recommended Exercise</p>
-                                    <hr>
-                                    <div class="recc-cont" data-recc-body>
-                                    </div>
-
-                                    <!-- recommended video-modal -->
-                                    <div class="recc-modal">
-                                        <div class="recc-modal-cont"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box food-recipe" data-tab-box="food-recipe">
-                        <div class="head">
-                            <p>Search through 1.7+ million recipes.</p>
-
-                            <button class="btn save-recipe">
-                                Saved Recipe
-                            </button>
-
-                            <div class="search-cont">
-                                <input type="text" data-recipe-searchinp class="searchinp" placeholder="Search food">
-                                <button class="search-btn" data-search-btn>
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="section-cont">
-                            <div class="main" data-recipe-result>
-                                <!-- <div class="food-card">
-                                    <div class="img" style="background:url('https://recipe-magic.netlify.app/static/media/c-low-sugar.1fc6e950.jpg'); background-size: cover; background-position: center;" data-food-id="123">
-                                    </div>
-                                    <br>
-                                    <div class="body">
-                                        <p>Food Title</p>
-                                        <ion-icon class="save-btn" name="bookmarks-outline"></ion-icon>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <!-- recipe modal -->
-                            <div class="recipe-food-modal">
-                                <div class="main-modal" data-recipe-main-modal>
-                                    <div class="recipe-head">
-                                        <div class="img-cont">
-                                            <img src="https://www.edamam.com/web-img/8eb/8eb4bcfbe8c89c21fcaecdc4e7ac6da5.jpg" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="main-txt">
-                                            <button class="back btn">Back</button>
-                                            <br>
-                                            <br>
-                                            <h2 class="title">Dinner Tonight: Chipped Beef Gravy</h2>
-                                            <span>By <span class="cook">Serious Eats</span></span>
-                                            <br>
-                                            <br>
-                                            <div class="fact">
-                                                <span>
-                                                    512 calories | 2 servings
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- recipe body -->
-                                    <div class="recipe-main-cont">
-                                        <div class="recipe-card ingredient">
-                                            <h4>Preparation</h4>
-                                            <ul class="list-item">
-                                                <li>1 tbl spoon</li>
-                                                <li>1 tbl spoon</li>
-                                                <li>1 tbl spoon</li>
-                                                <li>1 tbl spoon</li>
-                                            </ul>
-                                        </div>
-                                        <div class="recipe-card preparation">
-                                            <div class="body">
-                                                <h4>Preparation</h4>
-                                                <p>This recipe is provided by Serious Eats. You can view the detailed preparation instructions by clicking the following link.</p>
-                                                
-                                                <a href="" class="btn">
-                                                    View preparation.
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="recipe-card nutrition">
-                                            <h4>Nutrition</h4>
-                                            <table class="table">
-                                                <tr>
-                                                    <td>Energy</td>
-                                                    <td>25.59%</td>
-                                                    <td>511.86kcal</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Fat</td>
-                                                    <td>25.59%</td>
-                                                    <td>511.86kcal</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="recipe-card diet">
-                                            <h4>Diets</h4>
-                                            <p>Sulfites, Egg-Free, Peanut-Free, Tree-Nut-Free, Soy-Free, Shellfish-Free, Pork-Free, Crustacean-Free, Celery-Free, Mustard-Free, Sesame-Free, Lupine-Free, Mollusk-Free, Alcohol-Free, Sulfite-Free.                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- health news -->
-                    <div class="box health-news" data-tab-box="health-news">
-                        <div class="head">
-                            <h1>Top Health & Fitness News.</h1>
-                            <p>Get all news realted to health.</p>
-                        </div>
-                        <div class="main-body">
-                            <!-- health -->
-                            <div class="health-section">
-                                <hr>
-                                <h2> <small class="deco">*</small> Health</h2>
-                                <br>
-                                <div class="boxes h-container"></div>
-                                <br>
-                                <hr>
-                                <h2> <small class="deco">*</small> Fitness</h2>
-                                <div class="boxes f-container"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Meditation App -->
-                    <div class="box meditation" data-tab-box="meditation">
-                       <div class="meditation-container">
-                           <div class="head">
-                                <h1>Meditation</h1>
-                                <p>
-                                    Peace begins within and it expands to the outside
-                                </p>
-                           </div>
-                           <div class="img-cont">
-                               <div class="sunvibes">
-                                <div class="pointer-cont medi-pointer">
-                                </div>
-                               </div>
-                               <img src="./statics/img/section/medi.svg" class="img-fluid medi-img" alt="">
-                           </div>
-                           <div class="medi-instruction">
-                               <div class="medi-struction"></div>
-                               <br>
-                                <div class="start-cont" mt-4>
-                                    <button class="start-btn med-start-btn medbtn">
-                                       Start Meditating
-                                    </button>
-                                    <button class="stop-btn med-stop-btn medbtn">
-                                        Stop Meditating
-                                    </button>
-                               </div>
-                           </div>
-                       </div>
-                    </div>   
-                    <!-- heart rate -->
-                    <div class="box heart-rate" data-tab-box="heart-rate">
-                        <div class="head">
-                            <h2>Target Heart Rate</h2>
-                            <p>Get your target heart rate using this calculator</p>
-                            <span class="history-btn">
-                                <ion-icon name="bookmark" data-history-btn></ion-icon>
-                            </span>
-                        </div>
-                        <div class="show-screen">
-                            <br>
-                            <div class="inputs-field">
-                                <p>Your AGE</p>
-                                <input type="number" placeholder="25" class="age" data-heart-age>
-                                <br>
-                                <button class="heartrate-btn">Calculate Target Heart Rate</button>
-                            </div>
-                            <br>
-                            <div class="result-container" data-heart-result>
-                                <span class="close-cont">
-                                    <ion-icon name="close-circle" data-close-heart-container></ion-icon>
-                                    <ion-icon name="save" data-save-heart-value></ion-icon>
-                                </span>
-                                <div class="img-cont">
-                                    <ion-icon name="heart" class="heart"></ion-icon>
-                                    <div class="beat-cont">
-                                        <img src="./statics/img/section/heart.png" alt="" class="beat-line">
-                                        <div class="beat-ovl"></div>
-                                    </div>
-                                </div>
-                                <h1 class="target-value anime" data-heart-result-value></h1>
-                            </div>
-                        </div>
-                        <div class="history-cont" data-heart-rate-history>
-                            <div class="cont">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <th>Created</th>
-                                        <th>MAX Heart Rate</th>
-                                        <th>HRR</th>
-                                    </thead>
-                                    <tbody data-heart-history></tbody>
-                                </table>
-                                <br>
-                                <div class="action">
-                                    <button class="btn btn-danger" data-clear-history>Clear All</button>
-                                    <button class="btn close" data-close-history>Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
+              </div>
+              <div class="measurement-screen">
+                <div class="head">
+                  <h2>HEIGHT (FT)</h2>
+                  <h2>WEIGHT (lb)</h2>
                 </div>
+                <div class="inputs">
+                  <input
+                    type="number"
+                    data-bmi-height="height"
+                    class="bmi-inputs"
+                    name="height"
+                    placeholder="60"
+                  />
+                  <input
+                    type="number"
+                    data-bmi-weight="weight"
+                    class="bmi-inputs"
+                    name="weight"
+                    placeholder="45"
+                  />
+                </div>
+                <div class="action">
+                  <button class="btn submit-btn" data-calc-button>
+                    Calculate BMI
+                  </button>
+                </div>
+              </div>
+              <div class="result-main-screen">
+                <div class="result-screen" data-bmi-result></div>
+              </div>
+              <br />
+              <br />
             </div>
-        </section>
+            <!-- coro tracker -->
+            <div class="box coro-tracker" data-tab-box="coro-tracker">
+              <div class="coro-container">
+                <div class="head">
+                  <p>Persolan Covid-19 Chatbot</p>
+                  <small>Select one of the following.</small>
+                  <div class="action-select">
+                    <button class="btns chatbot-btn" data-chat-tab>
+                      Chat Bot
+                    </button>
+                    <button class="btns voice-recognition-btn" data-chat-tab>
+                      Voice Recognition
+                    </button>
+                  </div>
+                </div>
+                <div class="chat-container">
+                  <div class="chat-head">
+                    <div class="img-cont">
+                      <img
+                        src="./statics/img/section/bot.png"
+                        alt=""
+                        class="img-fluid"
+                      />
+                    </div>
+                    <span class="botname">Personal Bot</span>
+                  </div>
+                  <div class="chat-body">
+                    <div class="bot-loading">
+                      <span class="spinner-grow spinner-grow-sm p-0"></span>
+                      <span class="spinner-grow spinner-grow-sm p-0"></span>
+                      <span class="spinner-grow spinner-grow-sm p-0"></span>
+                    </div>
+                  </div>
+                  <div class="chat-action">
+                    <input
+                      type="text"
+                      class="chat-msg-input"
+                      placeholder="Countries name here"
+                    />
+                    <button class="submit-btn btn chat-submit">
+                      Send <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+                <!-- voice recognition -->
+                <div class="voice-reg-cont">
+                  <p>
+                    Pronounce a Country Name: eg <small>United State</small>
+                  </p>
+                  <div class="main">
+                    <button class="mic voice-start">
+                      <ion-icon name="mic-outline"></ion-icon>
+                    </button>
+                    <button class="mic voice-stop">
+                      <ion-icon name="mic-off-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Muscle Builder -->
+            <div class="box muscle-builder" data-tab-box="muscle-builder">
+              <div class="muscle-builder">
+                <div class="head">
+                  <h1>Muscle Builder</h1>
+                  <small>Build and Heal your Muscle.</small>
+                </div>
+                <div class="cards-cont">
+                  <div class="cards curr-weight">
+                    <div class="img-cont">
+                      <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                    <div class="cont">
+                      <small>Current Weight</small>
+                      <h4 data-curr-weight>34kg</h4>
+                    </div>
+                  </div>
+                  <div class="cards curr-height">
+                    <div class="img-cont">
+                      <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                    <div class="cont">
+                      <small>Current Height</small>
+                      <h4 data-curr-height>34ft</h4>
+                    </div>
+                  </div>
+                  <div class="cards curr-age">
+                    <div class="img-cont">
+                      <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                    <div class="cont">
+                      <small>Workout Target</small>
+                      <h4 data-workout-target>200</h4>
+                    </div>
+                  </div>
+                  <div class="cards workout">
+                    <div class="img-cont">
+                      <ion-icon name="barbell-outline"></ion-icon>
+                    </div>
+                    <div class="cont">
+                      <small>Workout Completed</small>
+                      <h4 data-curr-workout-completed>240</h4>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="workout-container">
+                  <div class="muscle-cont img-cont">
+                    <img
+                      src="./statics/img/Muscles/chest.png"
+                      alt=""
+                      class="img-fluid"
+                      data-muscle-img
+                    />
+                  </div>
+                  <div class="result-cont">
+                    <!-- select muscles -->
+                    <div class="muscle-select-cont">
+                      <p>Select Muscle Building</p>
+                      <select data-muscle-select></select>
+                      <br />
+                      <div
+                        class="muscle-preview-cont"
+                        data-select-preview
+                      ></div>
+                      <br />
+                      <div class="action">
+                        <button class="btn start-workout" data-start-workout>
+                          Start Workout
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- workout timer -->
+                  <div class="workout-timer-cont">
+                    <div class="timer-cont">
+                      <h1 class="timer-txt" data-workout-timer>120</h1>
+                      <br />
+                      <br />
+                      <button class="btn btn-danger" data-timer-stop-btn>
+                        Stop and Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <!-- main-workout-history -->
+                <div class="main-history">
+                  <!-- last exercise -->
+                  <div class="last-exercise">
+                    <div class="head">
+                      <p>Last Exercise</p>
+                      <button class="btn btn-danger" data-clear-btn>
+                        <small>clear all</small>
+                      </button>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="exercise-body" data-exercise-body>
+                      <div class="exercise-card"></div>
+                    </div>
+                  </div>
+                  <br />
+                  <!-- recommended exercise -->
+                  <div class="recommend-exercise">
+                    <p>Recommended Exercise</p>
+                    <hr />
+                    <div class="recc-cont" data-recc-body></div>
+
+                    <!-- recommended video-modal -->
+                    <div class="recc-modal">
+                      <div class="recc-modal-cont"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box food-recipe" data-tab-box="food-recipe">
+              <div class="head">
+                <p>Search through 1.7+ million recipes.</p>
+                <div class="search-cont">
+                  <input
+                    type="text"
+                    data-recipe-searchinp
+                    class="searchinp"
+                    placeholder="Search food"
+                  />
+                  <button class="search-btn" data-search-btn>Search</button>
+                </div>
+              </div>
+              <br />
+              <br />
+              <div class="section-cont">
+                <div class="main" data-recipe-result></div>
+                <!-- recipe modal -->
+                <div class="recipe-food-modal">
+                  <div class="main-modal" data-recipe-main-modal>
+                    <div class="recipe-head">
+                      <div class="img-cont">
+                        <img
+                          alt=""
+                          class="img-fluid recipe-modal-img"
+                        />
+                      </div>
+                      <div class="main-txt">
+                        <button class="back btn recipe-close-modal-btn">Back</button>
+                        <br />
+                        <br />
+                        <h2 class="title recipe-modal-title"></h2>
+                        <span>By <span class="cook recipe-modal-author"></span></span>
+                        <br />
+                        <br />
+                        <div class="fact recipe-modal-fact"> </div>
+                      </div>
+                    </div>
+                    <!-- recipe body -->
+                    <div class="recipe-main-cont">
+                      <div class="recipe-card ingredient">
+                        <h4>Ingredients</h4>
+                        <ul class="list-item recipe-modal-ingredients-list">
+                          
+                        </ul>
+                      </div>
+                      <div class="recipe-card preparation">
+                        <div class="body">
+                          <h4>Preparation</h4>
+                          <p class="recipe-modal-preparation-text"></p>
+
+                          <a href="" class="btn recipe-preparation-link" target="_blank"> View preparation. </a>
+                            <br>
+                            <br>
+                          <h4>Diets</h4>
+                          <div class="recipe-diets-text"> </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- health news -->
+            <div class="box health-news" data-tab-box="health-news">
+              <div class="head">
+                <h1>Top Health & Fitness News.</h1>
+                <p>Get all news realted to health.</p>
+              </div>
+              <div class="main-body">
+                <!-- health -->
+                <div class="health-section">
+                  <hr />
+                  <h2><small class="deco">*</small> Health</h2>
+                  <br />
+                  <div class="boxes h-container"></div>
+                  <br />
+                  <hr />
+                  <h2><small class="deco">*</small> Fitness</h2>
+                  <div class="boxes f-container"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Meditation App -->
+            <div class="box meditation" data-tab-box="meditation">
+              <div class="meditation-container">
+                <div class="head">
+                  <h1>Meditation</h1>
+                  <p>Peace begins within and it expands to the outside</p>
+                </div>
+                <div class="img-cont">
+                  <div class="sunvibes">
+                    <div class="pointer-cont medi-pointer"></div>
+                  </div>
+                  <img
+                    src="./statics/img/section/medi.svg"
+                    class="img-fluid medi-img"
+                    alt=""
+                  />
+                </div>
+                <div class="medi-instruction">
+                  <div class="medi-struction"></div>
+                  <br />
+                  <div class="start-cont" mt-4>
+                    <button class="start-btn med-start-btn medbtn">
+                      Start Meditating
+                    </button>
+                    <button class="stop-btn med-stop-btn medbtn">
+                      Stop Meditating
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- heart rate -->
+            <div class="box heart-rate" data-tab-box="heart-rate">
+              <div class="head">
+                <h2>Target Heart Rate</h2>
+                <p>Get your target heart rate using this calculator</p>
+                <span class="history-btn">
+                  <ion-icon name="bookmark" data-history-btn></ion-icon>
+                </span>
+              </div>
+              <div class="show-screen">
+                <br />
+                <div class="inputs-field">
+                  <p>Your AGE</p>
+                  <input
+                    type="number"
+                    placeholder="25"
+                    class="age"
+                    data-heart-age
+                  />
+                  <br />
+                  <button class="heartrate-btn">
+                    Calculate Target Heart Rate
+                  </button>
+                </div>
+                <br />
+                <div class="result-container" data-heart-result>
+                  <span class="close-cont">
+                    <ion-icon
+                      name="close-circle"
+                      data-close-heart-container
+                    ></ion-icon>
+                    <ion-icon name="save" data-save-heart-value></ion-icon>
+                  </span>
+                  <div class="img-cont">
+                    <ion-icon name="heart" class="heart"></ion-icon>
+                    <div class="beat-cont">
+                      <img
+                        src="./statics/img/section/heart.png"
+                        alt=""
+                        class="beat-line"
+                      />
+                      <div class="beat-ovl"></div>
+                    </div>
+                  </div>
+                  <h1 class="target-value anime" data-heart-result-value></h1>
+                </div>
+              </div>
+              <div class="history-cont" data-heart-rate-history>
+                <div class="cont">
+                  <table class="table table-striped">
+                    <thead>
+                      <th>Created</th>
+                      <th>MAX Heart Rate</th>
+                      <th>HRR</th>
+                    </thead>
+                    <tbody data-heart-history></tbody>
+                  </table>
+                  <br />
+                  <div class="action">
+                    <button class="btn btn-danger" data-clear-history>
+                      Clear All
+                    </button>
+                    <button class="btn close" data-close-history>Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <!-- covid 19 modal -->
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="./statics/js/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <!-- socket io -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js" integrity="sha512-PU5S6BA03fRv1Q5fpwXjg5nlRrgdoguZ74urFInkbABMCENyx5oP3hrDzYMMPh3qdLdknIvrGj3yqZ4JuU7Nag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"
+      integrity="sha512-PU5S6BA03fRv1Q5fpwXjg5nlRrgdoguZ74urFInkbABMCENyx5oP3hrDzYMMPh3qdLdknIvrGj3yqZ4JuU7Nag=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
 </html>
-
