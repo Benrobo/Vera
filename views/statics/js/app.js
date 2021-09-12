@@ -221,8 +221,8 @@ const BMI_ALGORITHM = function () {
     } else {
       calcbtn.classList.remove("inactive");
 
-      meter = Math.pow(height.value / 3.281, 2);
-      kg = weight.value / 2.205;
+      meter = Math.pow(height.value, 2);
+      kg = weight.value;
       bmi = (kg / meter).toFixed(2);
 
       //bmi data
