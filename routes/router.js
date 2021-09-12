@@ -5,8 +5,11 @@ const fetch = require("node-fetch");
 const youtube = require("scrape-youtube").default;
 
 // ENV
-const FOOD_APP_ID = process.env.FOOD_APP_ID;
-let FOOD_API_KEY = process.env.FOOD_API_KEY;
+// This api key is just for test in development, do not use this in production mode, for some reason repl.it removed my .env file which contains al my env data
+const FOOD_APP_ID = "bfd94ffa";
+let FOOD_API_KEY = "20cf8db12533e41d843a44082f65b29d";
+
+// console.log(FOOD_API_KEY)
 
 // scrapper
 const { getHealthNews, getFitnessNews } = require("../scrapper");
@@ -123,6 +126,7 @@ router.get("/api/getRecipe/all", async (req, res)=>{
   getAllRecipe()
   .then((data)=>{
     res.json(data)
+		console.log(data)
   })
 })
 

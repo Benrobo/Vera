@@ -1167,13 +1167,14 @@ const FOOD_RECIPE = ()=>{
 
     let req = await fetch("/api/getRecipe/all");
     let res = await req.json();
-    // log(res)
+    // log(res.text())
+		// return
     if(res.msg || res.status == 400 || res.status == 500){
       searchResultCont.innerHTML = `
         <p>${res.msg}</p>
       `;
     }
-    else if(res == ""){
+    else if(res == "" || res == null){
       searchResultCont.innerHTML = `
         <p>Sorry Recipe with that food name doesnt exist</p>
       `;

@@ -262,11 +262,12 @@
                         alert("Please username is required");
                         username = prompt("Username needed");
                     }
-                    else if(username.length > 10 || username.length < 0){
+else if(username.length > 10 || username.length < 0){
                         alert("username length should be 10");
                         username = prompt("Username needed");
                     }
-                    else{
+                    
+                else{
                         const sendData = {
                             username: username,
                             created_at: new Date().getTime()
