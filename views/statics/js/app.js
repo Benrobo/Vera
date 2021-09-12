@@ -213,7 +213,7 @@ const BMI_ALGORITHM = function () {
     } else if (height.value <= 0 || weight.value <= 0) {
       alert("Inputs value must be greather than 0");
       return;
-    } else if (height.value > 10 || weight.value >= 1000) {
+    } else if (height.value > 1000 || weight.value >= 5000) {
       alert("Invalid weight or height value");
       return;
     } else if (gender == "") {
@@ -221,8 +221,8 @@ const BMI_ALGORITHM = function () {
     } else {
       calcbtn.classList.remove("inactive");
 
-      meter = Math.pow(height.value / 3.281, 2);
-      kg = weight.value / 2.205;
+      meter = Math.pow(height.value, 2);
+      kg = weight.value;
       bmi = (kg / meter).toFixed(2);
 
       //bmi data
