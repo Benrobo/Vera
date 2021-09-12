@@ -213,7 +213,7 @@ const BMI_ALGORITHM = function () {
     } else if (height.value <= 0 || weight.value <= 0) {
       alert("Inputs value must be greather than 0");
       return;
-    } else if (height.value > 10 || weight.value >= 1000) {
+    } else if (height.value > 1000 || weight.value >= 5000) {
       alert("Invalid weight or height value");
       return;
     } else if (gender == "") {
