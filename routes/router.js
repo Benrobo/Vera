@@ -126,7 +126,6 @@ router.get("/api/getRecipe/all", async (req, res)=>{
   getAllRecipe()
   .then((data)=>{
     res.json(data)
-		console.log(data)
   })
 })
 
